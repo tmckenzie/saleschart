@@ -1,0 +1,38 @@
+.row.margin-top--lv4
+  .col-md-10.col-md-offset-1
+    .well
+      %h2 Account Organization Settings
+      = form_for [:admin, @vendor] do |f|
+        = render partial: 'modularized/form_errors', locals: { errors: @vendor.errors }
+
+        .form-group
+          = f.label :name, Vendor.human_attribute_name(:name)
+          = f.text_field :name, placeholder: 'Name', class: 'form-control'
+        .form-group
+          = f.label :email, Vendor.human_attribute_name(:email)
+          = f.text_field :email, placeholder: 'Email', class: 'form-control'
+        .form-group
+          = f.label :account_status, 'Account Status'
+          = f.select :account_status, options_for_select({ 'Enabled' => Account::AccountStatus::ENABLED, 'Disabled' => Account::AccountStatus::DISABLED }, @vendor.account.enabled? ? 1 : 0), {}, { class: 'form-control' }
+        - if @vendor.new_record?
+          %h3 Account Admin Settings
+          = f.fields_for :users do |uf|
+            .form-group
+              = uf.label :name, 'Account Admin Name'
+              = uf.text_field :name, placeholder: 'Account Admin Name', class: 'form-control'
+            .form-group
+              = uf.label :email, 'Account Admin Email'
+              = uf.text_field :email, placeholder: 'Account Admin Email', class: 'form-control'
+            -#.form-group
+            -#  = uf.label :phone_number, 'Mobile Number'
+            -#  = uf.text_field :phone_number, placeholder: 'Mobile Number', class: 'form-control'
+            -#.form-group
+            -#  = uf.label :time_zone
+            -#  = uf.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, { default: 'Eastern Time (US & Canada)' }, { class: 'form-control' }
+            .form-group
+              = uf.label :password
+              = uf.password_field :password, placeholder: 'Password', class: 'form-control'
+            .form-group
+              = uf.label :password_confirmation
+              = uf.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'form-control'
+        = f.submit 'Save', class: 'btn btn-primary btn-submit-top-margin'

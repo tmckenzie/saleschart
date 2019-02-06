@@ -1,0 +1,24 @@
+.row
+  .col-xs-12
+    %h4
+      %ol.breadcrumb.breadcrumb-with-button
+        %li= link_to 'Accounts', admin_vendors_path
+        %li= link_to(@vendor.name, [:admin, @vendor])
+        %li.active Edit
+        - if @vendor.admin
+          = link_to become_user_path(@vendor.admin), class: 'btn btn-success', data: { toggle: 'tooltip' }, title: 'Login as Admin' do
+            %i.fa.fa-sign-in
+
+.row.margin-top--lv2
+  .col-md-10.col-md-offset-1
+    .row
+      .col-xs-12.col-sm-3
+        %ul.nav.nav-pills.nav-stacked
+          %li.active= link_to 'Settings', '#panel_settings', data: {toggle: 'tab'}
+          %li= link_to 'Users', '#panel_users', data: {toggle: 'tab'}
+          %li= link_to 'Organization', '#panel_organization_info', data: {toggle: 'tab'}
+      .col-xs-12.col-sm-9
+        .tab-content
+          .tab-pane.active#panel_settings= render partial: 'accounts/settings_panel'
+          .tab-pane#panel_users= render partial: 'accounts/users_panel', locals: {users: @vendor.users, new_user_path: new_admin_vendor_user_path(@vendor)}
+          -#.tab-pane#panel_organization_info= render partial: 'accounts/organization_info_panel', locals: {organization: @vendor.organization, url: admin_vendor_organization_path(@vendor, anchor: 'panel_organization_info')}

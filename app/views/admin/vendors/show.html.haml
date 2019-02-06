@@ -1,0 +1,54 @@
+- vendor_admin = @vendor.admin
+.row
+  .col-xs-12
+    %h4
+      %ol.breadcrumb.breadcrumb-with-button
+        %li= link_to 'Accounts', admin_vendors_path
+        %li.active= @vendor.name
+        - if @vendor.admin
+          = link_to become_user_path(@vendor.admin), class: 'btn btn-success', data: { toggle: 'tooltip' }, title: 'Login as Admin' do
+            %i.fa.fa-sign-in
+
+.row
+  .col-xs-12
+    .well.well-light
+      .row
+        .col-xs-4
+          %dl
+            %dt Organization Email:
+            %dd= mail_to @vendor.email
+        .col-xs-4
+          %dl
+            %dt Account Admin Email:
+            %dd= vendor_admin.present? ? mail_to(@vendor.admin.email) : 'None'
+            -#= render partial: 'admin/npos/show_usage_stats', locals: { npo: @vendor}
+
+      .row
+        .col-xs-10.top-xlarge
+          %h4 Features:
+          = render partial: 'accounts/vendor_feature_settings', locals: {vendor: @vendor, view_only: true}
+
+      .row
+        .col-xs-10.top-xlarge
+          %h4 Users:
+          %table.table.table-striped.table-hover.table-bordered
+            %thead
+              %th Name
+              %th Email
+              %th.text-center Admin
+              %th.text-center.btn-group-width Actions
+            %tbody
+              - @vendor.users.each do |user|
+                %tr
+                  %td= user.name
+                  %td= link_to user.email, admin_user_path(user)
+                  %td.text-center
+                    - if user.vendor_admin?
+                      %i.fa.fa-2x.fa-check.text-success
+                  %td.text-center
+                    = link_to become_user_path(user), class: 'btn btn-default btn-xs', data: { toggle: 'tooltip' }, title: 'Login' do
+                      %i.fa.fa-sign-in.text-success
+
+      = link_to edit_admin_vendor_path(@vendor), class: 'btn btn-primary btn-submit-top-margin' do
+        %i.fa.fa-edit
+        Edit

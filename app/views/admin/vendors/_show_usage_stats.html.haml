@@ -1,0 +1,23 @@
+%div{ 'data-content-key' => "show_usage_stats_for_vendor_#{vendor.id}" }
+  %h5 Usage Stats:
+  %ul.list-inline
+    %li
+      %strong Logins:
+      %em
+        = number_with_delimiter vendor.total_sign_in_count
+        - if vendor.last_signed_in_date_for_all_users.present?
+          (last login: #{DateTimeFormatter.new(vendor.last_signed_in_date_for_all_users).display_default_with_meridian})
+    %li
+      %strong Total Raised Credit Card:
+      %em
+        - total_collected = ReportCalculation.total_collected_amount(vendor)
+        = number_to_currency total_collected
+        - if total_collected > 0
+          (last donation: #{ReportCalculation.last_collection_date(vendor).try(:to_date)})
+    %li
+      %strong Total Raised Carrier:
+      %em N/A
+    %li
+      - if vendor.partner.present? && vendor.partner.accountable.present?
+        %strong Partner:
+        %em= vendor.partner.accountable.name

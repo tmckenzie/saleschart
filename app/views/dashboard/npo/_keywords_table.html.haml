@@ -1,0 +1,103 @@
+#dashboardKeywords{data: {'content-key' => 'dashboard_keywords'}}
+  - if keywords.empty? && params[:filter_mode] != "inactive"
+    .alert.alert-info
+      %em You have no active keywords. Start by creating a new keyword here:
+      &nbsp
+      %span= link_to KeywordType::FUNDRAISING_MOBILE_PLEDGING, new_activity_path(type: 'mobile_pledging')
+      &nbsp
+      &nbsp
+      |
+      &nbsp
+      &nbsp
+      %span= link_to KeywordType::VOLUNTEER_FUNDRAISING, new_activity_path(type: 'social_giving')
+      &nbsp
+      &nbsp
+      |
+      &nbsp
+      &nbsp
+      %span= link_to KeywordType::COMMUNICATION, new_activity_path(type: 'mobile_messaging')
+  -elsif keywords.empty? && params[:filter_mode] == "inactive"
+    .alert.alert-info
+      %em You have no inactive keywords.
+      &nbsp
+  %table.table.table-striped.table-hover.mc-table.sortable
+    %thead
+      %tr
+        %th.hidden-xs Name
+        %th.hidden-xs Shortcode
+        %th.hidden-xs Type
+        %th.hidden-xs Status
+        %th.hidden-xs.number Pledged
+        %th.hidden-xs.number Pending
+        %th.hidden-xs.number Collected
+        %th.hidden-xs.number Offline
+        %th.hidden-xs.number.text-center Subscribers
+        %th.hidden-xs.number.text-center.quick-links-min-width Actions
+        %th.visible-xs Keyword
+        %th.visible-xs Stats
+    %tbody
+      - keywords.each do |row|
+        - keyword_type =  row.keyword_type
+        %tr{ class: "#{'disabled' if !row.active?}" }
+          - if row.online_gift?
+            %td.hidden-xs
+              %em= link_to OnlineGift::DISPLAY_NAME, edit_online_gift_path
+            %td.hidden-xs -
+            %td.hidden-xs Website Donation
+          - else
+            %td.hidden-xs.truncate_keyword
+              = link_to row.keyword_string, edit_activity_path(row.id)
+            %td.hidden-xs= row.shortcode_string
+            %td.hidden-xs= row.keyword_type_name
+          %td.hidden-xs= display_keyword_status(row)
+          %td.hidden-xs.number= display_amount_by_keyword(row[:amount_pledged], keyword_type)
+          %td.hidden-xs.number= display_amount_by_keyword(row[:amount_pending], keyword_type)
+          %td.hidden-xs.number= display_amount_by_keyword(row[:amount_raised], keyword_type)
+          %td.hidden-xs.number= display_amount_by_keyword(row[:offline_raised], keyword_type)
+          %td.hidden-xs.number.text-center= row[:subscriber_count] || 0
+          %td.hidden-xs
+            .col-xs-8
+              .pull-right= render partial: 'dashboard/npo/options_dropdown_menus', locals: { row: row }
+          %td.visible-xs
+            - if row.online_gift?
+              %em= link_to OnlineGift::DISPLAY_NAME, edit_online_gift_path
+            - else
+              = link_to activity_description(row.keyword_string, row[:shortcode_string], row[:campaign_name]), edit_activity_path(row.id)
+              %br
+              = "(#{row.keyword_type_name})"
+            %br
+            .top-small
+              = render partial: 'dashboard/npo/options_dropdown_menus', locals: { row: row, left: true }
+          %td.visible-xs
+            .summary-row
+              - if row.communication_keyword?
+                %strong Subscribers:
+                &nbsp;
+                %em= row[:subscriber_count] || 0
+              - else
+                %strong Pledged:
+                &nbsp;
+                %em= display_amount_by_keyword(row[:amount_pledged], keyword_type)
+                %br
+                %strong Pending
+                &nbsp;
+                %em= display_amount_by_keyword(row[:amount_pending], keyword_type)
+                %br
+                %strong Collected
+                &nbsp;
+                %em= display_amount_by_keyword(row[:amount_raised], keyword_type)
+                %br
+                %strong Offline
+                &nbsp;
+                %em= display_amount_by_keyword(row[:offline_raised], keyword_type)
+      -# ensure minimum of three lines in the table
+      - (3 - keywords.length).times.each do
+        %tr.hidden-xs
+          %td{colspan: 10} &nbsp
+    %tfoot
+      %tr.hidden-xs
+        %td{ colspan: 10, align: "center" }
+          = will_paginate keywords, renderer: McFrameworkPaginationLinkRenderer.new('dashboardKeywords')
+      %tr.visible-xs
+        %td{ colspan: 2 }
+          = will_paginate keywords, renderer: McFrameworkPaginationLinkRenderer.new('dashboardKeywords')

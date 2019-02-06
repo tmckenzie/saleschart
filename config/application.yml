@@ -1,0 +1,5 @@
+HELLO_WORLD_DATABASE_PASSWORD: <password-you-created-on-RDS>
+HELLO_WORLD_DATABASE_HOST: <endpoint-value-of-RDS-instance>
+HELLO_WORLD_DATABASE_PORT: "5432"
+SECRET_KEY_BASE: <output-from-previous-command>
+

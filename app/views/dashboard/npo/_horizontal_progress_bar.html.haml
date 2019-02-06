@@ -1,0 +1,27 @@
+.progress
+  .progress-bar.progress-bar-success.progress-bar-striped{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "#{progress}", :role => "progressbar", :style => "width:#{progress}%"}
+    #{progress}% Complete
+.row.top-small
+  .col-xs-5
+    .goal-stat
+      .goal-number
+        $#{total} Raised
+  .col-xs-5.pull-right
+    .goal-stat
+      .goal-number
+        $#{goal} Goal
+-##countdown-wrap
+-#  .row
+-#    #glass
+-#      #progress{:style => "width:10%; background: red; "}
+      -##progress{:style => "width:#{progress}%; background: #{color}; "}
+-#  .row
+-#    .col-xs-12
+-#      .col-xs-5
+-#        .goal-stat
+-#          .goal-number
+-#            $#{total} Raised
+-#      .col-xs-5.pull-right
+-#        .goal-stat
+-#          .goal-number
+-#            $#{goal} Goal

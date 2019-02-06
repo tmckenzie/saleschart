@@ -1,0 +1,13 @@
+.row
+  .col-xs-5
+    %h4 Button Embed Code
+    %p
+      %small
+        %em.text-muted= "Embed the GiveLater button, when donors click it, the form will pop up automatically. #{link_to "How?", "http://www.mobilecause.com/client-tutorial-how--to-embed-a-widget/", :target => "_blank"}".html_safe
+    %pre.code= pledging_widget_embed_code(widget_configuration)
+  .col-xs-offset-1.col-xs-5
+    %h4 Form Embed Code
+    %p
+      %small
+        %em.text-muted= "Skip the button and embed the GiveLater form directly on your site. Donors will have one less step to complete. #{link_to "How?", "http://www.mobilecause.com/client-tutorial-how--to-embed-a-widget/", :target => "_blank"}".html_safe
+    %pre.code= pledging_widget_embed_code(widget_configuration)

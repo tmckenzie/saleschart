@@ -1,0 +1,16 @@
+= builder.row row_html: { class: "padding-top--lv4 padding-bottom--lv4", id: 'dashboardCampaignCards' } do
+  - if params[:filter_mode] == "inactive" && campaigns.empty?
+    = builder.column do
+      .alert.alert-info
+        %em You have no inactive campaigns.
+        &nbsp
+  = builder.render wrapper: :column, xs: 12, sm: 6, md: 4, lg: 3, collection: campaigns, with: :campaign_card
+  - if campaigns.total_pages == campaigns.current_page
+    = builder.column xs: 12, sm: 6, md: 4, lg: 3 do
+      %a.btn.btn--tile-new{ href: '/campaigns/new', title: 'Add New Campaign' }
+        %span.tile-new__text
+          %span.tile-new__icon
+            +
+          New Campaign
+  = builder.column column_html: { class: "text-center" } do
+    = will_paginate campaigns, renderer: McFrameworkPaginationLinkRenderer.new('dashboardCampaignCards')

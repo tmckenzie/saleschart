@@ -1,0 +1,5 @@
+.row.margin-top--lv4
+  .col-md-10.col-md-offset-1
+    .well
+      %h2 New User
+      = render partial: 'admin/users/form', locals: {form_action: @npo ? admin_npo_users_path(@npo, @user) : admin_users_path(@user)}

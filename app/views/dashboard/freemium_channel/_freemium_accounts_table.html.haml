@@ -1,0 +1,30 @@
+%h3 Freemium Accounts
+.row
+  .col-xs-12
+    = form_for freemium_filter, url: {}, method: :get, html: { class: 'form-inline' } do |f|
+      .form-group= f.text_field :search_string, title: "Advanced search options e.g (name:acc_name;legacy:true;status:new;email:xyz)", class: 'form-control'
+      %button.btn.btn-default.btn-xs Search
+    %table.sortable.table.table-striped.table-hover.mc-table
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th Total Raised (All Time)
+          %th Last Login
+          %th
+      %tbody
+        - if free_accounts.present?
+          - free_accounts.each do |row|
+            %tr
+              %td
+                %strong= link_to row[:npo][:name], edit_admin_vendor_path(row[:npo][:id])
+              %td= row[:npo][:email]
+              %td= number_to_currency(row[:total_collected_amount], precision: 0)
+              %td
+                - if row[:npo][:admin_id].present?
+                  = row[:npo][:last_login]
+              %td
+                - if row[:npo][:admin_id].present?
+                  = link_to become_user_path(row[:npo][:admin_id]), class: 'btn btn-default btn-xs' do
+                    %i.fa.fa-share
+                    Login as Admin

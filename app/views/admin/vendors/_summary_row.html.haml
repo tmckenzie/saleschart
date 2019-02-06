@@ -1,0 +1,12 @@
+%ul.list-inline{data: {'content-key' => "summary_row_for_vendor_#{vendor.id}"}}
+  %li
+    %strong Admin:
+    %em= mail_to vendor.admin.try :email
+  %li
+    %strong Plan:
+    %em= vendor.try(:vendor_contract).try(:name)
+  %li
+    %strong Status:
+    - account_status =  "#{vendor.current_account_status} #{vendor.is_demo? ? " (Demo)" : ''}"
+    %em= account_status
+

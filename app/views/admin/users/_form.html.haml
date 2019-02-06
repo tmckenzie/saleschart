@@ -1,0 +1,63 @@
+- is_remote = false unless defined?(is_remote)
+= form_for @user, url: form_action, remote: is_remote do |f|
+  = render partial: 'modularized/form_errors', locals: {errors: @user.errors}
+  .form-group
+    = f.label :email
+    = f.text_field :email, placeholder: 'Email', class: 'form-control'
+    = f.label :username
+    = f.text_field :username, placeholder: 'Username (Optional)', class: 'form-control'
+  - unless @user.new_record?
+    .row
+      .col-xs-6.text-left
+        = link_to 'Change your password', '', onclick: "$('#vf-password-inputs').toggle('slow');return false;"
+  - display_style = @user.new_record? ? '' : 'display: none'
+  #vf-password-inputs{ style: display_style }
+    .form-group
+      = f.label :password
+      = f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'Confirm Password', class: 'form-control'
+  - if current_user.mobilecause_admin?
+    .checkbox
+      = f.label :call_center_user do
+        = f.check_box :call_center_user
+        Call Center User
+    .checkbox
+      = f.label :integration_user do
+        = f.check_box :integration_user
+        Integration User
+    .checkbox
+      = f.label :mobilecause_admin do
+        = f.check_box :mobilecause_admin
+        MobileCause Admin
+    .checkbox
+      = f.label :vendor_admin do
+        = f.check_box :vendor_admin
+        Account Admin
+    .form-group
+      = f.label :pepl_user_id
+      =  f.text_field :pepl_user_id, placeholder: 'Pepl User ID (Experts only)', class: 'form-control'
+  .form-group
+    = f.label :name
+    = f.text_field :name, placeholder: 'Name', class: 'form-control'
+  .form-group
+    = f.label :phone_number, 'Mobile Number'
+    = f.text_field :phone_number, placeholder: 'Mobile Number', class: 'form-control'
+  .form-group
+    = f.label :time_zone
+    = f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones, {default: "Eastern Time (US & Canada)"}, {class: 'form-control'})
+
+  - unless params[:action] == 'new'
+    .checkbox
+      %label
+        = check_box_tag 'enable_recurring_failed_notification', 1, UserNotification.find_by_user_id_and_notify_type_and_delivery_method(@user.id, UserNotification::NPO_NOTIFICATION_ON_RECURRING_DONATION_TERMINATION, 'email').present?, {id: 'enable_recurring_failed_notification'}
+        = 'Enable Email Notification for Failed Recurring Donation'
+  %div
+    %label.label.label-info API Token Key:
+    %span
+      To manage your API Token Key please visit the
+      = link_to 'Developer Portal', developer_dashboard_path
+  .top-large
+    - button_text = params[:action] == 'new' ? 'Create User' : 'Update User'
+    = f.submit button_text, class: 'btn btn-primary'

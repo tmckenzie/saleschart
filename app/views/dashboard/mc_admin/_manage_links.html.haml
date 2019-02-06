@@ -1,0 +1,3 @@
+%ul.list-unstyled#manage_links
+  - links_collection.each do |link_hash|
+    %li= link_to link_hash[:label], link_hash[:link]

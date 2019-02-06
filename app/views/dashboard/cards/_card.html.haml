@@ -1,0 +1,51 @@
+- id = options[:campaign][:id]
+
+= builder.render partial: "shared/components/card" do
+  - builder.define Cards::CardExhibit::CARD_BLOCK, card_html: { class: "card__dashboard #{builder.card_type} updateProgressBar elevate--lv4@onHover", data: { path: campaign_keywords_url(campaign.id) } }
+  - builder.skip_completely Cards::CardExhibit::CARD_IMAGE_BLOCK
+  - builder.skip_completely Cards::CardExhibit::CARD_STATS_BLOCK
+  - builder.define Cards::CardExhibit::CARD_TITLE_BLOCK do |options|
+    .form-group
+      %textarea.campaignTitle{ readonly: true, id: id, title: options[:title] }
+        = "#{options[:title]}"
+      .feedback
+
+  - builder.define Cards::CardExhibit::CARD_STATUS_BLOCK do |options|
+    = link_to '#', class: "card__action out-right", data: { campaign_id: campaign.id, toggle: 'modal', target: '#new-activity-modal' } do
+      %i.fa.fa-plus{ title: "Create a New Activity" }
+    = link_to '#', class: "card__action editTitle out-right" do
+      %i.fa.fa-pencil{ title: "Edit Title" }
+    = link_to options[:settings_path], class: "card__action editSettings out-right" do
+      %i.fa.fa-cog{ title: "Edit Settings" }
+
+  - builder.skip Cards::CardExhibit::CARD_ACTION_BLOCK
+
+  - builder.define :card_progress_total, defaults: { label: "Raised" } do |options|
+    / add .active class to .progress--total when .amount is more than 0
+    .progress--total.active
+      = options[:label]
+      %span.amount.amountRaised
+        = options[:total]
+
+  - builder.define :card_progress_goal, defaults: { label: "Goal" } do |options|
+    .progress--goal
+      = options[:label]
+      %span.amount.goalAmount
+        = options[:goal]
+
+  - builder.after Cards::CardExhibit::CARD_PROGRESS_BLOCK do
+    = builder.render :card_donation_summary, defaults: { donation_count: "1,000", average_donation: "$1000" } do |options|
+      .row.margin-top--lv4.padding-top--lv2.padding-bottom--lv2.bg--info-medium
+        .col-xs-6
+          .card__gift-total.text-center
+            %span.gift__amount
+              = options[:donation_count]
+            %span.gift__label
+              Gifts
+        .col-xs-6
+          .card__gift-average.text-center
+            %span.gift__amount
+              = options[:average_donation]
+            %span.gift__label
+              Avg. Gifts
+    %a{ href: '#', class: 'card__action-overlay goToCampaign' }

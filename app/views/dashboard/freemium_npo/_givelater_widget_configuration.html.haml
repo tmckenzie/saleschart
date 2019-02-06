@@ -1,0 +1,46 @@
+:javascript
+  __MC__ = $.extend(__MC__ || {}, {
+    adminControlsConfiguration: [
+      { selector: 'form.edit_pledging_widget_configuration [data-field=background_color]', key: 'background_color' },
+      { selector: 'form.edit_pledging_widget_configuration [data-field=text_color]', key: 'text_color' },
+    ]
+  });
+.row
+  .col-xs-11
+    %hr
+.row
+  .col-xs-4
+    = pledging_widget_embed_code(widget_configuration).html_safe
+  .col-xs-3
+    = form_for widget_configuration, url: update_pledging_widget_configuration_activity_path(widget_configuration.campaigns_keyword), remote: true, method: :put, class: '' do |f|
+      .row
+        .col-xs-3
+          %h4 Choose Your Options
+          %h5 Background color:
+          = f.label :background_color, class: 'radio' do
+            = f.radio_button :background_color, "grey", data: { field: 'background_color' }, class: 'background_color_field'
+            Grey
+          = f.label :background_color, class: 'radio' do
+            = f.radio_button :background_color, "white", data: { field: 'background_color' }
+            White
+          = f.label :background_color, class: 'radio' do
+            = f.radio_button :background_color, "transparent", data: { field: 'background_color' }
+            Transparent
+      .row
+        .col-xs-3
+          %h5 Text color:
+          = f.label :text_color, class: 'radio' do
+            = f.radio_button :text_color, "white", data: { field: 'text_color' }
+            White
+          = f.label :text_color, class: 'radio' do
+            = f.radio_button :text_color, "black", data: { field: 'text_color' }
+            Black
+      .row
+        .col-xs-3
+          = f.submit "Save", class: 'btn btn-info'
+  .col-xs-4
+    %h4 Form Embed Code
+    %p
+      %small
+        %em.text-muted= "Skip the button and embed the GiveLater form directly on your site. Donors will have one less step to complete. #{link_to "How?", "http://www.mobilecause.com/client-tutorial-how--to-embed-a-widget/", target: "_blank"}".html_safe
+    %pre.code= pledging_widget_embed_code(widget_configuration)

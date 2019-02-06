@@ -1,0 +1,14 @@
+.row
+  .col-xs-12
+    .row
+      %h4
+        = link_to 'Accounts', admin_vendors_path
+        >
+        = link_to(@vendor.name, [:admin, @vendor])
+        >
+        = link_to 'Edit', edit_admin_vendor_path(@vendor)
+        >
+        Settings
+.row
+  .col-xs-10
+    = render partial: 'accounts/settings_panel'

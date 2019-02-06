@@ -1,0 +1,14 @@
+%ul.channels.media-list
+  %li.social-channel.twitter.media
+    %i.fa.fa-twitter.fa-2x.pull-left
+    .pull-right.media-body
+    - if npo.twitter_enabled?
+      = link_to npo.twitter_nickname, unlink_credentials_twitter_path, class: ''
+    - else
+      .description
+        = link_to 'Twitter account setup', authorize_twitter_path, class: '', target: '_blank'
+
+  %li.social-channel.facebook.media
+    %i.fa.fa-facebook.fa-2x.pull-left
+    .description
+      %p.left-large Facebook sharing enabled

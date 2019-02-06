@@ -1,0 +1,18 @@
+.btn-group.sortTabContent{ data: { tabs: '#dashboard-tabbed-content' } }
+  %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+    Sort
+    %span.caret
+  %ul.dropdown-menu
+    %li
+      = link_to "Highest Donations", sort_mode: StatisticsService::SORT_MODE_TOTAL_DONATIONS_DESC
+    %li
+      = link_to "Lowest Donations", sort_mode: StatisticsService::SORT_MODE_TOTAL_DONATIONS_ASC
+    %li.active
+      = link_to "Newest", sort_mode: StatisticsService::SORT_MODE_CREATED_DESC
+    %li
+      = link_to "Oldest", sort_mode: StatisticsService::SORT_MODE_CREATED_ASC
+    %li
+      = link_to "Name A-Z", sort_mode: StatisticsService::SORT_MODE_OBJECT_NAME_ASC
+    %li
+      = link_to "Name Z-A", sort_mode: StatisticsService::SORT_MODE_OBJECT_NAME_DESC
+      

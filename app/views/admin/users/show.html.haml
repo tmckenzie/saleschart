@@ -1,0 +1,32 @@
+.row.margin-top--lv4
+  .col-md-10.col-md-offset-1
+    .well
+      %dl.dl-horizontal
+        %dt Email:
+        %dd= @user.email
+
+        %dt User Name:
+        %dd= @user.username
+
+        %dt Call Center User:
+        %dd= @user.call_center_user
+        - if current_user.mobilecause_admin?
+          %dt Mobilecause admin:
+          %dd= @user.mobilecause_admin
+
+        %dt Name:
+        %dd= @user.name
+
+        %dt Mobile Number:
+        %dd= number_to_phone(@user.phone_number, area_code: true)
+        %dd
+          - if @user.verified?
+            %span.badge
+              %i.fa.fa-checkfa.fa-download
+            %span
+              %strong Verified Mobile
+
+      - edit_user_path = @npo ? edit_admin_vendor_user_path(@npo, @user) : edit_admin_user_path(@user)
+      = link_to edit_user_path, class: 'btn btn-primary' do
+        %i.fa.fa-edit
+        Edit

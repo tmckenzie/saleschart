@@ -1,0 +1,8 @@
+= builder.render options.merge(partial: "dashboard/cards/card") do
+  - builder.define Cards::CardExhibit::CARD_DETAILS_BLOCK, action: "join"
+  - builder.skip :card_donation_summary
+  - builder.define Cards::CardExhibit::CARD_PROGRESS_BLOCK do
+    .progress--total
+      = number_with_delimiter(campaign.subscriber_count)
+      %br
+      %small= "Subscription".pluralize(campaign.subscriber_count)

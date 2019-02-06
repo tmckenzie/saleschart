@@ -1,0 +1,36 @@
+- preview_url = preview_public_campaigns_keyword_donations_path(campaigns_keyword)
+- donation_link =  new_online_form_url(campaigns_keyword.default_form.get_secure_token)
+- preview_before_save = params[:preview_before_save] == 'false' ? false : true
+
+:javascript
+  function resizeIframe(obj) {
+    new_height = obj.contentWindow.document.body.scrollHeight;
+    obj.style.height = new_height + 'px';
+    new_code = $('#embedded_code').text().replace(/height="\d+"/, 'height="' + new_height + '"');
+    $('#embedded_code').text(new_code);
+  }
+
+.row.margin-top--lv4
+  .col-md-12
+    = link_to root_path, class: 'breadcrumb' do
+      %i.fa.fa-chevron-left.padding-right-small
+      Back to Dashboard
+
+.row.margin-top--lv2
+  .col-md-12
+    %span.form__label-icon.pull-left
+      %i{ class: "mc #{Navigation::Menu::MENU_ICON_MAPPING[label]}" }
+    %h1.dashboard__title.pull-left
+      = label
+
+.row.margin-top--lv2
+  .col-md-5
+    = blocks.render partial: 'donation_form_settings/form', form_id: 'preview_before_save_form', campaigns_keyword: campaigns_keyword, section_exhibitor: DonationFormSettingExhibit.new(campaigns_keyword.default_form, self), donation_form_setting: campaigns_keyword.default_form, preview_before_save: preview_before_save, show_embed_code_panel: true, exclude_form_level_copy: true
+    %p.top-xlarge.bottom-xlarge
+      Promote this link on your website and by email, social media, and text.
+      %br
+        = "Secure Link: "
+        = link_to donation_link, target: '_blank' do
+          = donation_link
+  .col-md-7.margin-top--lv2.hidden-xs.hidden-sm
+    %iframe{id: "online_giving_form_preview", src: preview_url, width: '100%', scrolling: 'no', data: {'mc-reload' => true, 'preview-tab-container' => ''}, onload: 'javascript:resizeIframe(this);'}

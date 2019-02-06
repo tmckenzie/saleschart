@@ -1,0 +1,56 @@
+:javascript
+  __MC__ = $.extend(__MC__ || {}, {
+    adminControlsConfiguration: [
+      { selector: 'form.edit_pledging_widget_configuration [data-field=background_color]', key: 'background_color' },
+      { selector: 'form.edit_pledging_widget_configuration [data-field=text_color]', key: 'text_color' },
+    ]
+  });
+.row
+  .col-xs-3
+    .row
+      .col-xs-3
+        %h5 Choose your button:
+        .row
+          .col-xs-3
+            %button.btn.btn-success.btn-lg Button
+            %button.btn.btn-success.btn-sm Button
+        .row
+          .col-xs-3
+            %button.btn.btn-info.btn-lg Button
+            %button.btn.btn-info.btn-sm Button
+        .row
+          .col-xs-3
+            %button.btn.btn-danger.btn-lg Button
+            %button.btn.btn-danger.btn-sm Button
+        .row
+          .col-xs-3
+            %button.btn.btn-warning.btn-lg Button
+            %button.btn.btn-warning.btn-sm Button
+  .col-xs-3
+    = pledging_widget_embed_code(widget_configuration).html_safe
+  .col-xs-offset-1.col-xs-4
+    = form_for widget_configuration, url: update_pledging_widget_configuration_activity_path(widget_configuration.campaigns_keyword), remote: true, method: :put, class: '' do |f|
+      .row
+        .col-xs-3
+          %h5 Choose your background color:
+          = f.label :background_color, class: 'radio' do
+            = f.radio_button :background_color, "grey", data: { field: 'background_color' }
+            Grey
+          = f.label :background_color, class: 'radio' do
+            = f.radio_button :background_color, "white", data: { field: 'background_color' }
+            White
+          = f.label :background_color, class: 'radio' do
+            = f.radio_button :background_color, "transparent", data: { field: 'background_color' }
+            Transparent
+      .row
+        .col-xs-3
+          %h5 Choose your text color:
+          = f.label :text_color, class: 'radio' do
+            = f.radio_button :text_color, "white", data: { field: 'text_color' }
+            White
+          = f.label :text_color, class: 'radio' do
+            = f.radio_button :text_color, "black", data: { field: 'text_color' }
+            Black
+      .row
+        .col-xs-3
+          = f.submit "Save", class: 'btn btn-info'

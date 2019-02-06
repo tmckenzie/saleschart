@@ -1,0 +1,80 @@
+.row.margin-top--lv4
+  .col-md-10.col-md-offset-1
+    %h3 Users
+
+.row.margin-top--lv2
+  .col-md-10.col-md-offset-1
+    .row
+      .col-xs-6
+        = form_for @user_filter, url: {}, method: :get, html: { class: 'form-inline' } do |f|
+          .form-group= f.text_field :email, class: 'form-control', placeholder: 'Search by Email'
+          %button.btn.btn-primary.btn-form-control
+            %i.fa.fa-search
+      .col-xs-6
+        .text-right
+          = link_to new_admin_user_path, class: 'btn btn-primary' do
+            %i.fa.fa-plus
+            New #{current_user.account_type} Admin
+
+.row
+  .col-md-10.col-md-offset-1
+    = will_paginate @users, renderer: BootstrapPagination::Rails
+
+.row
+  .col-md-10.col-md-offset-1
+    .table-responsive
+      %table.table.table-striped.table-hover.table-bordered
+        %colgroup
+          - if current_user.mobilecause_admin?
+            %col{ span: 8 }
+          - else
+            %col{ span: 7 }
+          %col.table__controls
+        %thead
+          %tr
+            %th Name
+            %th Email
+            %th User Name
+            %th API Key
+            %th.text-center Integration
+            %th.text-center Call Center
+            - if current_user.mobilecause_admin?
+              %th.text-center MC Admin
+            %th VF
+            %th.text-center Account
+            %th.text-center Actions
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td.ellipsis-row= link_to((user.name || 'NA'), admin_user_path(user))
+              %td.ellipsis-row= user.email
+              %td.ellipsis-row= user.username
+              %td.ellipsis-row= user.authentication_token
+              %td.text-center
+                - if user.integration_user
+                  .badge
+                    %i.fa.fa-check
+              %td.text-center
+                - if user.call_center_user
+                  .badge
+                    %i.fa.fa-check
+              - if current_user.mobilecause_admin?
+                %td.text-center
+                  - if user.mobilecause_admin?
+                    .badge
+                      %i.fa.fa-check
+              %td
+                - if user.fundraiser?
+                  .badge
+                    %i.fa.fa-check
+              %td.text-center
+                - if user.account.present?
+                  #{user.account.accountable_type}
+              %td.text-center
+                .btn-group
+                  = link_to become_user_path(user), class: 'btn btn-default btn-xs', data: { toggle: 'tooltip' }, title: 'Login as User' do
+                    %i.fa.fa-share.text-success
+                  = link_to edit_admin_user_path(user), id: "edit_user_#{user.id}", class: 'btn btn-default btn-xs', data: { toggle: 'tooltip' }, title: 'Edit User' do
+                    %i.fa.fa-edit.text-info
+                  = link_to admin_user_path(user), method: :delete, class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', confirm: 'Are you sure?' }, title: 'Delete User' do
+                    %i.fa.fa-trash.text-danger

@@ -1,0 +1,6 @@
+.row.margin-top--lv4
+  .col-md-10.col-md-offset-1
+    .well
+      %h2 Edit User
+      - path_for_form = @npo ? admin_vendor_user_path(@npo, @user) : admin_user_path(@user)
+      = render partial: 'admin/users/form', locals: {form_action: path_for_form }

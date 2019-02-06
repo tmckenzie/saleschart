@@ -1,0 +1,34 @@
+.row
+  .col-xs-12
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to "Settings", '#', {data: {toggle: "tab", target: '#settings_tab'}}
+      %li
+        = link_to "Features", '#', {data: {toggle: "tab", target: '#features_tab'}}
+
+    .tab-content.left-side
+      .tab-pane.active#settings_tab
+        = form_for [:admin, @vendor], remote: true do |f|
+          = render partial: 'modularized/form_errors', locals: {errors: @vendor.errors}
+          .row
+            .col-xs-12.top-medium
+              - if current_user.mobilecause_admin?
+                .row
+                  .col-xs-12.col-sm-6
+                    = f.label :account_status, 'Account Status'
+                    - statuses = {'Enabled' => Account::AccountStatus::ENABLED, 'Disabled' => Account::AccountStatus::DISABLED}
+                    = f.select :account_status, options_for_select(statuses, @vendor.account.account_status), {}, class: 'form-control input-small'
+              .submit.top-medium
+                = f.submit 'Save', class: 'btn btn-primary btn-submit-top-margin'
+
+      .tab-pane#features_tab
+        = form_tag update_features_admin_vendor_path(@vendor), remote: true, method: :put do |f|
+          = render partial: 'modularized/form_errors', locals: {errors: @vendor.errors}
+          .row
+            .col-xs-12.top-xlarge
+              - if current_user.mobilecause_admin?
+                = render partial: 'accounts/vendor_feature_settings', locals: {vendor: @vendor, view_only: false}
+              .submit.top-medium
+                = submit_tag 'Save', class: 'btn btn-primary btn-submit-top-margin'
+
+-#= render partial: 'shared/remote_content_notification_popup', locals: {message: 'Saved'}

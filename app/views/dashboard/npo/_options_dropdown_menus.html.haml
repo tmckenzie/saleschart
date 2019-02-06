@@ -1,0 +1,20 @@
+- links = active_keyword_links(row)
+- right_or_left = defined?(left) ? "dropdown-menu-left" : "dropdown-menu-right"
+- if links.present?
+  .btn-group.nounderline
+    %a.dropdown-toggle{ data: { toggle: 'dropdown' }, href: '#' }
+      %i.fa.fa-circle.dots
+      %i.fa.fa-circle.dots
+      %i.fa.fa-circle.dots
+      %span
+    %ul.dropdown-menu{ class: right_or_left }
+      - links.each do |name, link|
+        %li
+          = link_to name, link, target: '_blank'
+      %li
+        - if row.active? && row.keyword.resetable?
+          = link_to 'Deactivate Keyword', deactivate_keyword_activity_path(row, sort_mode: params[:sort_mode], filter_mode: params[:filter_mode]), title: "Deactivate Keyword", data: { confirm: 'If you confirm deactivate YOU WILL NO LONGER RECEIVE DONATIONS ON THIS KEYWORD', toggle: 'dropdown' }, method: :post, remote: true
+          -#- if mc_admin?
+          -#  = link_to 'Release Keyword', release_keyword_activity_path(row, sort_mode: params[:sort_mode], filter_mode: params[:filter_mode]), title: "Release Keyword", data: { confirm: 'If you confirm release This Keyword will be able for others to use', toggle: 'dropdown' }, method: :post, remote: true
+        - elsif row.keyword_scheduled_date.present? && row.keyword.resetable? && row.keyword_scheduled_end_date.present?
+          = link_to 'Reactivate Keyword', reactivate_keyword_activity_path(row,sort_mode: params[:sort_mode], filter_mode: params[:filter_mode]), title: "Reactivate Keyword", data: { confirm: 'If you confirm reactivate YOU WILL BE ABLE TO RECEIVE DONATIONS ON THIS KEYWORD', toggle: 'dropdown' }, method: :post, remote: true

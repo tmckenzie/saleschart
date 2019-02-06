@@ -1,0 +1,5 @@
+= builder.render options.merge(partial: "dashboard/cards/card") do
+  - builder.define Cards::CardExhibit::CARD_PROGRESS_BLOCK, progress: 3
+  - builder.append Cards::CardExhibit::CARD_PROGRESS_BLOCK do |options|
+    = builder.render :card_progress_total
+    = builder.render :card_progress_goal

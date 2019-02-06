@@ -6,8 +6,25 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module RailsBootstrap
   class Application < Rails::Application
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration should go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded.
+
+    # Custom directories with classes and modules you want to be autoloadable.
+    config.autoload_paths += Dir["#{config.root}/lib/**/"] - Dir["#{config.root}/lib/generators/**/"]
+    config.autoload_paths += Dir["#{config.root}/app/models/filters/**/"]
+    config.autoload_paths += Dir["#{config.root}/app/exhibits/"]
+    config.autoload_paths += Dir["#{config.root}/app/components/"]
+    config.autoload_paths += Dir["#{config.root}/app/pages/**"]
+    config.autoload_paths += Dir["#{config.root}/app/models/concerns/"]
+    config.autoload_paths += Dir["#{config.root}/app/controllers/concerns/"]
+    config.autoload_paths += Dir["#{config.root}/app/exhibits1/concerns"]
+
+    config.action_controller.permit_all_parameters = true
+
 
     config.generators do |g|
       g.test_framework :rspec,

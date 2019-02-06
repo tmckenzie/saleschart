@@ -1,0 +1,37 @@
+- unless view_only
+  :javascript
+    $(document).on('content-updated', function() {
+
+      $('#npo_feature_beta_code').on('change', function(e) {
+        $('#beta_features').toggleClass('hide');
+      });
+    });
+
+%div{:data => {'content-key' => 'vendor-feature-settings'}}
+  %table.table.table-striped.table-bordered.table-hover.top-small
+    %tbody
+      - Feature.displayable_list.each do |available_feature|
+        %tr
+          %td.col-xs-8= label_tag "npo[feature_#{available_feature[:name]}]", available_feature[:display_name]
+          %td.col-xs-4.text-center
+            - if view_only
+              - if vendor.has_feature?(available_feature[:name])
+                %i.fa.fa-2x.fa-check.text-success
+            - else
+              - disabled = (available_feature[:name] == Feature::BETA_CODE && !current_user.beta_feature_admin?) || Feature.suspended?(available_feature[:name])
+              = select_tag "vendor[feature_#{available_feature[:name]}]", options_for_select([['Disabled', false], ['Enabled', true]], vendor.has_feature?(available_feature[:name])), { class: 'form-control input-small', disabled: disabled }
+
+  - hidden_class = vendor.has_beta_code_feature? ? '' : 'hide'
+  #beta_features{ class: "#{hidden_class}"}
+    %strong Beta Features
+    %table.table.table-striped.table-bordered.table-hover.top-small
+      %tbody
+        - Feature::BETA_LIST.each do |available_feature|
+          %tr
+            %td.col-xs-8= label_tag "vendor[feature_#{available_feature[:name]}]", available_feature[:display_name]
+            %td.col-xs-4.text-center
+              - if view_only
+                - if vendor.has_feature?(available_feature[:name])
+                  %i.fa.fa-2x.fa-check.text-success
+              - else
+                = select_tag "vendor[feature_#{available_feature[:name]}]", options_for_select([['Disabled', false], ['Enabled', true]], vendor.has_feature?(available_feature[:name])), { class: 'form-control input-small' }

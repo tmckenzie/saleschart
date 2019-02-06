@@ -1,0 +1,44 @@
+.row
+  .col-xs-12.bottom-xlarge
+    - account = @vendor.present? ? @vendor : @account
+    -#- new_user_path = current_user.mmp_admin? ? new_admin_vendor_user_path(account) : new_vendor_user_path
+    -#= link_to new_user_path, class: 'btn btn-primary' do
+    -#  %i.fa.fa-user
+    -#  New User
+.row
+  .col-xs-12
+    %table.table.table-striped.table-hover.table-bordered
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th User Name
+          %th Mobile Number
+          %th Verification
+          %th Admin
+          %th.text-center.btn-group-width Actions
+      %tbody
+        - users.each do |user|
+          -if user.app_user?
+            %tr
+              - user_path = current_user.mmp_admin? ? admin_vendor_user_path(@vendor, user) : npo_user_path(user)
+              - edit_user_path = current_user.mmp_admin? ? edit_admin_vendor_user_path(@vendor, user) : edit_npo_user_path(user)
+              %td
+                = link_to((user.name || 'NA'), user_path)
+              %td= user.email
+              -#%td= user.username
+              -#%td= number_to_phone(user.phone_number, area_code: true)
+              %td.text-center
+                - if user.verified?
+                  .badge
+                    %i.fa.fa-check
+              %td.text-center
+                - if user.vendor_admin
+                  .badge
+                    %i.fa.fa-check
+              %td.text-center
+                .btn-group
+                  = link_to edit_user_path, id: "edit_user_#{user.id}", class: 'btn btn-default btn-xs', title: 'Edit user',  data: { toggle: 'tooltip' } do
+                    %i.fa.fa-edit.text-info
+                  = link_to user_path, method: :delete, class: 'btn btn-default btn-xs', title: 'Delete user',  data: { toggle: 'tooltip', confirm: 'Are you sure?' } do
+                    %i.fa.fa-trash.text-danger

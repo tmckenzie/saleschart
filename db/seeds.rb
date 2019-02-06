@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Seeding..."
+puts "Defaults ..."
+master = Master.create(name: 'Master Account')
+account = Account.create(accountable: master)
+
+puts "  seeding admin users"
+%w(admin@mmp.com).each do |user|
+  admin = User.create(email: user, password: 'password', password_confirmation: 'password', account_id: account.id)
+end

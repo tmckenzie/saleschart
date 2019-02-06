@@ -1,0 +1,9 @@
+.col-lg-6.col-md-6{data: {'content-key' => 'dashboard_state_map'}}
+  .panel.panel-primary
+    .panel-heading
+      #container{:style => "height: 400px"}
+        .col-lg-12.col-md-12.text-center
+          Donors
+        #geographicmap{style: "overflow: hidden; height: 400px; width: 550px;" }
+          = render_chart(address_chart, 'geographicmap')
+
