@@ -6,7 +6,7 @@ set :stages, %w(review production)
 set :application, "mmp"
 set :repo_url, "git@github.com:tmckenzie/saleschart.git"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-set :rvm_ruby_version, 'ruby-2.2.10@mmp'
+set :rvm_ruby_version, 'ruby-2.2.5@mmp'
 set :passenger_restart_with_touch, true
 set :rvm_type, :system
 
