@@ -19,7 +19,5 @@ test:
 production:
   <<: *default
   database: mmp_production
-  username: mmp_admin
-  password: <%= ENV['MMP_DATABASE_PASSWORD'] %>
-  host: <%= ENV['MMP_DATABASE_HOST'] %>
-  port: <%= ENV['MMP_DATABASE_PORT'] %>
+  username: root
+  password: root
