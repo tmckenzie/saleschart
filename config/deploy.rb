@@ -1,4 +1,10 @@
 # require "bundler/capistrano"
+# require "bundler/capistrano"
+
+set :stages, %w(review production)
+set :default_stage, "review"
+# require 'capistrano/ext/multistage'
+
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
@@ -10,6 +16,10 @@ set :rvm_ruby_version, 'ruby-2.2.5@mmp'
 set :passenger_restart_with_touch, true
 set :rvm_type, :system
 
+# set :bundle_without, [:development, :test]
+set :delayed_job_server_role, :worker
+set :delayed_job_args, "-n 2"
+
 set :application, "mmp"
 set :repository, "git@github.com:tmckenzie/saleschart.git"
 
@@ -19,8 +29,6 @@ set :ssh_options, {
     auth_methods: %w(publickey)
 }
 
-set :bundle_cmd, "/usr/local/rvm/gems/ruby-2.2.5@global/bin/bundle"
-set :bundle_dir, "/usr/local/rvm.rvm/gems/ruby-2.2.5"
 
 set :deploy_to, '/var/www/apps/mmp'
 on roles :all do

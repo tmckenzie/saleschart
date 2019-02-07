@@ -1,4 +1,4 @@
-class AccountsController < BaseController
+class AccountsController < ApplicationController
   load_and_authorize_resource :user
 
   layout :determine_layout
