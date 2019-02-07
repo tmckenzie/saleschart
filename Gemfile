@@ -15,12 +15,6 @@ gem 'devise'
 gem "cancan"
 gem 'compass-rails'
 gem 'compass_twitter_bootstrap', '2.3.1'
-gem 'capistrano'
-gem 'capistrano-bundler'
-gem 'capistrano-passenger', '>= 0.1.1'
-gem 'capistrano-rails'
-gem 'capistrano-rvm'
-gem 'capistrano-figaro-yml', '~> 1.0.2'
 # gem 'blocks', '~> 3.1', git: 'git@github.com:hunterae/blocks.git', branch: '3-1-stable'
 gem 'will_paginate', '~> 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
@@ -40,12 +34,19 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'rvm-capistrano'
 
+  gem 'capistrano', '~> 3.7'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-figaro-yml', '~> 1.0.2'
+
+
 end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
-  gem 'mysql2', '~> 0.3.15'  
 end
 group :production do
   gem 'mysql2', '~> 0.3.15'
