@@ -2,12 +2,39 @@ module Dashboards
   class VendorDashboardExhibit < DashboardExhibit
 
     def panels_to_render
-      {
-           :panel_1 => sales_panel,
-           :panel_2 => inventory_panel,
-           :panel_3 => people_panel,
-      #       :panel_4 => bottom_panel
-      }
+      # {
+      #      :panel_1 => sales_panel,
+      #      :panel_2 => inventory_panel,
+      #      :panel_3 => people_panel,
+      # #       :panel_4 => bottom_panel
+      # }
+      set_panels(['sales_panel', 'inventory_panel', 'people_panel'])
+
+    end
+
+    def set_panels(panel_list)
+      panels = {}
+      count =1
+      panel_list.each do |panel|
+        if can_render(panel)
+          panels.merge!("panel_#{count}".to_sym => send(panel))
+          count += 1
+        end
+      end
+      p panels
+    end
+
+    def can_render(panel)
+      p model.vendor
+      ret = false
+      if panel == 'people_panel'
+        ret =  model.vendor.has_consumer_charts_feature? ? true : false
+      elsif panel == 'inventory_panel'
+        ret =  model.vendor.has_inventory_charts_feature? ? true : false
+      elsif panel == 'sales_panel'
+        ret =  model.vendor.has_sales_charts_feature? ? true : false
+      end
+      ret
     end
 
     def sales_panel
@@ -15,8 +42,8 @@ module Dashboards
           partial: "dashboard/summary_panel",
           rows: {
               row_1: {partial: "dashboard/summary_panel_header", locals: {name: "Sales"}},
-              row_2: {partial: "dashboard/summary_list", locals: {rows: collect_sales_rows(model.vendor) }},
-              row_3: {partial: "dashboard/vendor/sales_links", locals: { vendor: model.vendor }},
+              row_2: {partial: "dashboard/summary_list", locals: {rows: collect_sales_rows(model.vendor)}},
+              row_3: {partial: "dashboard/vendor/sales_links", locals: {vendor: model.vendor}},
           }
       }
     end
@@ -45,7 +72,7 @@ module Dashboards
       {
           partial: "dashboard/content_panel",
           rows: {
-              row_1: {partial: "dashboard/vendor/accounts_table", locals: {account_filter: model.account_filter(context.params.merge(:page=>'all'), context.current_ability), rows: model.accounts_table}}
+              row_1: {partial: "dashboard/vendor/accounts_table", locals: {account_filter: model.account_filter(context.params.merge(:page => 'all'), context.current_ability), rows: model.accounts_table}}
           }
       }
     end
@@ -112,8 +139,8 @@ module Dashboards
       [
           ["Messages Sent (#{current_month})", "N/A"],
           ['Messages Sent (All Time)', "N/A"]
-          #["Messages Sent (#{current_month})", deferred_call_for(:total_messages_sent_this_month)],
-          #['Messages Sent (All Time)', deferred_call_for(:total_messages_sent)]
+      #["Messages Sent (#{current_month})", deferred_call_for(:total_messages_sent_this_month)],
+      #['Messages Sent (All Time)', deferred_call_for(:total_messages_sent)]
       ]
     end
 
