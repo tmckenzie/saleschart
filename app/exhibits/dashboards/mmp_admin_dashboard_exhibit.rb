@@ -3,32 +3,34 @@ module Dashboards
 
     def panels_to_render
       {
-          panel_1: fundraising_panel,
-          panel_2: messaging_panel,
+          panel_1: sales_panel,
+          panel_2: inventory_panel,
           panel_3: manage_panel,
           panel_4: ops_center
       }
     end
 
-    def fundraising_panel
+    def sales_panel
       {
           partial: "dashboard/summary_panel",
           rows: {
-              row_1: {partial: "dashboard/summary_panel_header", locals: {name: "Fundraising"}},
-              row_2: {partial: "dashboard/summary_list", locals: {rows: collect_fundraising_rows}}
+              row_1: {partial: "dashboard/summary_panel_header", locals: {name: "Sales"}},
+              # row_2: {partial: "dashboard/summary_list", locals: {rows: collect_sales_rows(model.vendor) }},
+              # row_3: {partial: "dashboard/vendor/sales_links", locals: { vendor: model.vendor }},
           }
       }
     end
 
-    def messaging_panel
+    def inventory_panel
       {
           partial: "dashboard/summary_panel",
           rows: {
-              row_1: {partial: "dashboard/summary_panel_header", locals: {name: "Messaging"}},
-              row_2: {partial: "dashboard/summary_list", locals: {rows: collect_messaging_rows}}
+              row_1: {partial: "dashboard/summary_panel_header", locals: {name: "Inventory"}},
+              # row_2: {partial: "dashboard/summary_list", locals: {rows: collect_messaging_rows}}
           }
       }
     end
+
 
     def manage_panel
       {
