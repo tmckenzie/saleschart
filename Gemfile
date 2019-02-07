@@ -15,7 +15,7 @@ gem 'devise'
 gem "cancan"
 gem 'compass-rails'
 gem 'compass_twitter_bootstrap', '2.3.1'
-gem 'blocks', '~> 3.1', git: 'git@github.com:hunterae/blocks.git', branch: '3-1-stable'
+gem 'blocks', '~> 3.0'
 gem 'will_paginate', '~> 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'font-awesome-rails', '~> 4.7.0'
