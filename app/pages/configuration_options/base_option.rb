@@ -1,7 +1,7 @@
 module ConfigurationOptions
   class BaseOption
-    include ConfigurationConcerns
-    include CallWithParams
+    # include ConfigurationConcerns
+    # include CallWithParams
 
     add_config :default_value
     add_config :ignore_if_nil, default: false, instance_predicate: true
