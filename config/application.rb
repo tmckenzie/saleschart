@@ -24,7 +24,7 @@ module RailsBootstrap
     config.autoload_paths += Dir["#{config.root}/app/exhibits1/concerns"]
 
 
-    config.eager_load_paths << Rails.root.join('app', 'decorators', 'concerns')
+    # config.eager_load_paths << Rails.root.join('app', 'decorators', 'concerns')
     config.action_controller.permit_all_parameters = true
 
 
