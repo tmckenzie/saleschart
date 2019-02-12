@@ -1,0 +1,23 @@
+!!!
+%html{ lang: 'en' }
+  %head
+    -#%title= page_title(yield :title)
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "modularized/manifest"
+    = javascript_include_tag "https://www.google.com/jsapi"
+    = favicon_link_tag '/favicon.ico'
+    = csrf_meta_tags
+    = yield :head
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"}
+  %body.beta.sticky--nav
+    .jquery_widget_wrapper
+    -#= render partial: 'modularized/app_nav_bar'
+    .container-fluid
+      .row
+        .col-xs-12.col-sm-2
+          -#= render 'operations/side_navigation'
+        .col-xs-12.col-sm-10
+          = yield
+      = render 'modularized/app_footer'
+      -#= render 'modularized/npo_features'
+      = javascript_include_tag 'app_build'

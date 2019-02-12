@@ -1,0 +1,34 @@
+.row
+  .col-xs-12
+    .row
+      %h3
+        = link_to 'Operations', admin_workbenchs_path
+        >
+        Jobs
+    = form_tag jobs_admin_workbenchs_path, class: 'form-inline', method: :get do
+      = text_field_tag :job_type, params[:job_type], placeholder: "Job Type", class: 'search-query'
+      = button_tag class: 'btn btn-default' do
+        %i.fa.fa-search
+        Filter
+
+    %h5
+      Last #{@limit} Jobs
+
+    .row
+      .col-xs-12
+        = will_paginate @jobs, renderer: BootstrapPagination::Rails
+        %table.table.table-striped.table-hover.mc-table
+          %thead
+            %th Name
+            %th Type
+            %th Status
+            %th Created
+            -#%th Actions
+          %tbody
+          - @jobs.each do |job|
+            %tr
+              %td.ellipsis-row= link_to "#{job.name}", job_details_admin_workbenchs_path(:job => { :job_id => job.id })
+              %td.ellipsis-row= job.job_type
+              %td= job.status
+              %td= DateTimeFormatter.new(job.created_at).display_default_with_meridian
+              -#%td= ""

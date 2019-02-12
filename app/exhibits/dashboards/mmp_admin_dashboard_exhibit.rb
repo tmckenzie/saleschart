@@ -43,7 +43,7 @@ module Dashboards
     end
 
     def ops_center
-      model.operations_admin? ?
+      true ?
       {
           partial: "dashboard/summary_panel",
           rows: {

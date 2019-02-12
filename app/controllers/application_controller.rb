@@ -49,6 +49,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
+  def load_nav_links
+    @nav_links ||= (current_user.present? ? Navigation::Menu.build_nav_links(view_context, current_user) : {})
+  end
 
 end

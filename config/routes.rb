@@ -21,6 +21,11 @@ Rails.application.routes.draw do
         get :become, :on => :member
       end
     end
+    resources :workbenchs do
+      get :jobs, :on => :collection
+      get :job_details, :on => :collection
+      get :sessions, :on => :collection
+    end
   end
 
   resources :users do

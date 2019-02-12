@@ -1,0 +1,51 @@
+.row
+  .col-xs-12
+    %h3
+      = link_to 'Operations', admin_workbenchs_path
+      >
+      = link_to 'Jobs', jobs_admin_workbenchs_path
+      >
+      Job Details
+    %h5
+      = @job.try(:name)
+.well
+  .row
+    .col-xs-3
+      .row
+        = "Job            : #{@job.try(:name)}"
+      .row
+        = "Started at     : #{@job.try(:started_at)}"
+      .row
+        = "Finished at    : #{@job.try(:finished_at)}"
+      .row
+        = "Elapsed Time   : #{@job.try(:pretty_duration)}"
+      -if @job.total_count
+        .row
+          = "Total Records  : #{@job.total_count}"
+      -if @job.succeeded_count
+        .row
+          = "Total Success  : #{@job.succeeded_count}"
+      -if @job.failed_count
+        .row
+          = "Total Failed  : #{@job.failed_count}"
+    .col-xs-6
+      %table.table.table-striped.table-hover.mc-table
+        %thead
+          %th Job Stat
+          %th Value
+        %tbody
+        - @job.job_stats.each do |job_stat|
+          %tr
+            %td.ellipsis-row= job_stat.stat_name
+            %td.ellipsis-row= job_stat.stat_value
+.row
+  %h5
+    Details
+  %table.table.table-striped.table-hover.mc-table
+    %thead
+      %th Value
+    %tbody
+    - @job_details.each do |job_detail|
+      %tr
+        %td.ellipsis-row= StringUtil.text_to_html(job_detail.detail_value)
+  = will_paginate @job_details, {renderer: BootstrapPagination::Rails, :inner_window => 2}

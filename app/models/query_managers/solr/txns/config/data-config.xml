@@ -1,0 +1,57 @@
+<dataConfig>
+  <dataSource type="JdbcDataSource"
+              driver="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://mobc-stgdb1a.den11.viawesthosted.net/fox_review"
+              user="mobilecause"
+              password="mobilecause"/>
+   <propertyWriter dateFormat="yyyy-MM-dd HH:mm:ss" type="SimplePropertiesWriter" directory="/var/solr/data/txns/data/" filename="my_dih.properties" locale="en-US" />
+
+  <document>
+    <entity name="product"
+      pk="id"
+     query=" select t.id, t.donation_id ,d.ip_address, d.credit_card_type,  t.phone ,t.carrier,t.shortcode, t.keyword ,t.amount ,t.cc_type, c.name campaign_name, t.campaign_id,t.npo_id,
+ t.product_code, t.created_at, CONVERT(DATE_FORMAT(t.created_at, '%m'), UNSIGNED INTEGER) created_at_month, CONVERT(DATE_FORMAT(t.created_at, '%Y'), UNSIGNED INTEGER)  created_at_year,
+ CONVERT(DATE_FORMAT(t.created_at, '%Y%m'), UNSIGNED INTEGER) created_at_year_month, CONVERT(DATE_FORMAT(t.created_at, '%Y-%m-%d'), DATE) created_at_date, CONVERT(DATE_FORMAT(t.created_at, '%Y%m%d'), UNSIGNED INTEGER) created_at_day,
+ t.billing_status,t.first_name,t.last_name , t.street_address , t.city ,t.state, t.zip ,t.email ,t.payment_processor_class,
+ t.billing_type , t.gender ,t.npo_payment_processor_id, n.name npo_name, case when ISNULL(recurring_donation_id) then 0 else 1 end as is_recurring_donation, r.frequency as recurring_frequency,
+ CASE billing_type WHEN 'offline' THEN 'offline' WHEN 'non-payment' THEN 'offline' ELSE 'online' END AS transaction_source
+ from transactions t, campaigns c, npos n, donations d LEFT JOIN recurring_donations r ON d.recurring_donation_id = r.id
+ where c.id = t.campaign_id and d.id = t.donation_id and t.npo_id = n.id"
+
+     deltaImportQuery=" select t.id, t.donation_id ,d.ip_address, d.credit_card_type,  t.phone ,t.carrier,t.shortcode, t.keyword ,t.amount ,t.cc_type, c.name campaign_name, t.campaign_id,t.npo_id,
+ t.product_code, t.created_at, CONVERT(DATE_FORMAT(t.created_at, '%m'), UNSIGNED INTEGER) created_at_month, CONVERT(DATE_FORMAT(t.created_at, '%Y'), UNSIGNED INTEGER)  created_at_year, CONVERT(DATE_FORMAT(t.created_at, '%Y%m'), UNSIGNED INTEGER) created_at_year_month, CONVERT(DATE_FORMAT(t.created_at, '%Y-%m-%d'), DATE) created_at_date, CONVERT(DATE_FORMAT(t.created_at, '%Y%m%d'), UNSIGNED INTEGER) created_at_day, t.billing_status,t.first_name,t.last_name , t.street_address , t.city ,t.state, t.zip ,t.email ,t.payment_processor_class,
+ t.billing_type , t.gender ,t.npo_payment_processor_id, n.name npo_name, case when ISNULL(recurring_donation_id) then 0 else 1 end as is_recurring_donation, r.frequency as recurring_frequency,
+ CASE billing_type WHEN 'offline' THEN 'offline' WHEN 'non-payment' THEN 'offline' ELSE 'online' END AS transaction_source
+ from transactions t, campaigns c, npos n, donations d LEFT JOIN recurring_donations r ON d.recurring_donation_id = r.id
+ where c.id = t.campaign_id and d.id = t.donation_id and t.npo_id = n.id and t.id = ${dih.delta.id}"
+
+     deltaQuery=" SELECT t.id FROM transactions t WHERE t.updated_at &gt; '${dih.last_index_time}'" >
+
+
+
+  <field column="id" name="id"/>
+  <field column="phone" name="phone" indexed="true" stored="true"/>
+  <field column="carrier" name="carrier"  indexed="true" stored="true"/>
+  <field column="shortcode" name="shortcode" indexed="true" stored="true"/>
+  <field column="keyword" name="keyword" indexed="true" stored="true"/>
+  <field column="amount" name="amount" indexed="true" stored="true"/>
+  <field column="cc_type" name="cc_type" indexed="true" stored="true"/>
+  <field column="campaign_id" name="campaign_id"  indexed="true" stored="true"/>
+  <field column="campaign_name" name="campaign"  indexed="true" stored="true"/>
+  <field column="npo_name" name="npo"  indexed="true" stored="true"/>
+  <field column="npo_id" name="npo_id" indexed="true" stored="true"/>
+  <field column="ip_address" name="ip_address" indexed="true" stored="true"/>
+  <field column="created_at" name="event_timestamp" indexed="true" stored="true"/>
+  <field column="created_at_month" name="created_at_month" indexed="true" stored="true"/>
+  <field column="created_at_year_month" name="created_at_year_month" indexed="true" stored="true"/>
+  <field column="created_at_date" name="created_at_date" indexed="true" stored="true"/>
+  <field column="created_at_day" name="created_at_day" indexed="true" stored="true"/>
+  <field column="billing_status" name="billing_status" indexed="true" stored="true"/>
+  <field column="billing_type" name="billing_type" indexed="true" stored="true"/>
+  <field column="is_recurring_donation" name="is_recurring_donation" indexed="true" stored="true"/>
+  <field column="recurring_frequency" name="recurring_frequency" indexed="true" stored="true"/>
+  <field column="transaction_source" name="transaction_source" indexed="true" stored="true"/>
+
+   </entity>
+  </document>
+</dataConfig>

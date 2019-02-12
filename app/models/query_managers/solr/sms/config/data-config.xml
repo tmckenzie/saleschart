@@ -1,0 +1,36 @@
+<dataConfig>
+  <dataSource type="JdbcDataSource"
+              driver="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://mobc-stgdb1a.den11.viawesthosted.net/fox_review"
+              user="mobilecause"
+              password="mobilecause"/>
+   <propertyWriter dateFormat="yyyy-MM-dd HH:mm:ss" type="SimplePropertiesWriter" directory="/var/solr/data/txns/data/" filename="my_dih.properties" locale="en-US" />
+
+  <document>
+    <entity name="sms_messages"
+      pk="id"
+     query="select mt.id, mt.phone_number, mt.shortcode, mt.carrier, mt.mt_type, mt.originable_type, c.name campaign_name, c.id campaign_id, c.npo_id npo_id, n.name npo_name from mobile_terminateds mt, campaigns c, npos n, messages m  where c.npo_id = n.id and originable_id = c.id and originable_type = 'Message' and originable_id = m.id
+union
+select mt.id, mt.phone_number, mt.shortcode, mt.carrier, mt.mt_type, mt.originable_type, c.name campaign_name, c.id campaign_id, c.npo_id npo_id, n.name npo_name from mobile_terminateds mt, campaigns c, npos n, campaigns_keywords ck  where c.npo_id = n.id and originable_id = c.id and originable_type = 'CampaignsKeyword' and originable_id = ck.id"
+
+
+
+
+  <field column="id" name="id"/>
+  <field column="phone_number" name="phone" indexed="true" stored="true"/>
+  <field column="carrier" name="carrier"  indexed="true" stored="true"/>
+  <field column="shortcode" name="shortcode" indexed="true" stored="true"/>
+  <field column="mt" name="cc_type" indexed="true" stored="true"/>
+  <field column="campaign_id" name="campaign_id"  indexed="true" stored="true"/>
+  <field column="campaign_name" name="campaign"  indexed="true" stored="true"/>
+  <field column="npo_name" name="npo"  indexed="true" stored="true"/>
+  <field column="npo_id" name="npo_id" indexed="true" stored="true"/>
+  <field column="created_at" name="event_timestamp" indexed="true" stored="true"/>
+  <field column="created_at_month" name="created_at_month" indexed="true" stored="true"/>
+  <field column="created_at_year_month" name="created_at_year_month" indexed="true" stored="true"/>
+  <field column="created_at_date" name="created_at_date" indexed="true" stored="true"/>
+  <field column="created_at_day" name="created_at_day" indexed="true" stored="true"/>
+
+   </entity>
+  </document>
+</dataConfig>

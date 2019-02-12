@@ -1,0 +1,19 @@
+- class_name = locals[:class_name] rescue nil
+%footer{ class: class_name }
+  - if Rails.env.review?
+    .col-xs-12.col-sm-5
+      %p
+        ©2009-#{Time.now.year} MobileCause.com:
+        = link_to "Version #{APP_VERSION}",release_notes_public_site_path
+  - else
+    .col-xs-12.col-sm-5
+      %p
+        -#©2009-#{Time.now.year} MobileCause.com: Version
+        -#= APP_VERSION
+  - if current_user.present?
+    .col-xs-12.col-sm-7
+      %ul
+        -if @nav_links.present?
+          - @nav_links[:footer_nav_links].each do |link|
+            - attrs = link[:attrs] || {}
+            %li= link_to link.keys.first, link.values.first, attrs

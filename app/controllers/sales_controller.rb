@@ -1,35 +1,38 @@
 class SalesController < ApplicationController
 
   def index
+
+
     @h = LazyHighCharts::HighChart.new('graph') do |f|
       f.options[:chart][:defaultSeriesType] = "area"
       f.series(:name => 'Toys', :data => [3, 20, 3, 5, 4, 10, 12, 3, 5, 6, 7, 7, 80, 9, 9])
       f.series(:name => 'Home', :data => [1, 3, 4, 3, 3, 5, 4, -46, 7, 8, 8, 9, 9, 0, 0, 9])
     end
 
-    @pie = LazyHighCharts::HighChart.new('pie') do |f|
-      f.chart({:defaultSeriesType => "pie", :backgroundColor => "transparent", :margin => [30, 30, 30, 30],
-               :spacingTop => 0, :spacingBottom => 0, :spacingLeft => 0, :spacingRight => 0})
-      series = {
-          :type => 'pie',
-          :name => '$',
-          :data => [
-              ['Other', 5000],
-              ['Home', 8000],
-              ['Toys', 10000]
-          ]
-      }
-      f.series(series)
-      f.legend(:layout => 'vertical', :itemMarginTop => 0, :itemMarginBottom => 0)
-      f.plot_options(:pie => {
-          :allowPointSelect => true,
-          :cursor => "pointer",
-          :showInLegend => true,
-          :dataLabels => {
-              :enabled => false
-          }
-      })
-    end
+    @pie = Charts::PieView.new.simple_pie( QueryManagers::MockQueryManager.new().sales_by_dept(1))
+    # @pie = LazyHighCharts::HighChart.new('pie') do |f|
+    #   f.chart({:defaultSeriesType => "pie", :backgroundColor => "transparent", :margin => [30, 30, 30, 30],
+    #            :spacingTop => 0, :spacingBottom => 0, :spacingLeft => 0, :spacingRight => 0})
+    #   series = {
+    #       :type => 'pie',
+    #       :name => '$',
+    #       :data => [
+    #           ['Other', 5000],
+    #           ['Home', 8000],
+    #           ['Toys', 10000]
+    #       ]
+    #   }
+    #   f.series(series)
+    #   f.legend(:layout => 'vertical', :itemMarginTop => 0, :itemMarginBottom => 0)
+    #   f.plot_options(:pie => {
+    #       :allowPointSelect => true,
+    #       :cursor => "pointer",
+    #       :showInLegend => true,
+    #       :dataLabels => {
+    #           :enabled => false
+    #       }
+    #   })
+    # end
 
     @combochart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title({:text => "Combination chart"})
@@ -63,5 +66,8 @@ class SalesController < ApplicationController
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
       f.chart({:defaultSeriesType => "column"})
     end
+
+    # @bar_example = Charts::BarChartView.new.simple_google_bar(QueryManagers::MockQueryManager.new.sales_by_year_month(1))
   end
+
 end

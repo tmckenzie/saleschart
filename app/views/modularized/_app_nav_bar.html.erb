@@ -1,0 +1,88 @@
+<div class="navbar navbar-default navbar--app mc--blue navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button aria-controls="main-navigation" aria-expanded="false" class="navbar-toggle collapsed" data-target="#main-navigation" data-toggle="collapse" type="button">
+        <span class="sr-only">App Navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <a class="navbar-brand inverted" href="/">
+        <span class="sr-only">MobileCause</span>
+      </a>
+    </div>
+
+      <div class="navbar-collapse collapse" id="main-navigation">
+
+        <ul class="nav navbar-nav navbar-right nav--utils">
+          <li class="width--3@vp-xs width--2@vp-sm">
+            <a href="/" title="Dashboard">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+          <li class="width--3@vp-xs width--2@vp-sm">
+            <% for @link in @nav_links[:settings_links] %>
+              <% label = content_tag(:i, '', class: @link[:icon_class]) %>
+              <%= link_to( label, @link[:link], title: 'Settings' ) %>
+            <% end %>
+          </li>
+          <li class="width--3@vp-xs width--2@vp-sm dropdown">
+            <a href="#" title="Help" aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button">
+              <i class="mc icon-help"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <% for @link in @nav_links[:support_menu_links] %>
+                <li><%= link_to(@link[:label], @link[:link], data: @link[:data] || {}, target: @link[:target], onclick:  @link[:onclick]) %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="width--3@vp-xs width--4@vp-sm account__settings dropdown">
+            <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+              <i class="fa fa-user-circle-o hidden-sm hidden-md hidden-lg"></i>
+              <span class="account__info hidden-xs">
+                <span class="badge account__badge">
+                  <%= current_user.name.blank? ? current_user.username.first.titleize : current_user.name.first.titleize %>
+                </span>
+                <span class="account__text">
+                  <span class="account__username"><%= current_user.name.blank? ? current_user.username.titleize : current_user.name.titleize %></span>
+                  <span class="account__nponame"><%= @current_user.npo.try(:name) || 'MobileCause' %></span>
+                </span>
+                <i aria-hidden="true" class="fa fa-angle-down hidden-xs hidden-sm" id="settings_chevron"></i>
+              </span>
+            </a>
+            <ul class="dropdown-menu">
+              <% if session.include?(:mc_admin_id) && current_npo.present? && current_npo.enabled? %>
+                <li><%= link_to 'Features', show_features_account_path(format: :js), data: { modal: true, modalId: 'show_features_modal' } %></li>
+              <% end %>
+              <% for @link in @nav_links[:account_info_links] %>
+                <li><%= link_to(@link[:label], @link[:link], id: @link[:id], data: @link[:data] || {} ) %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav nav-justified nav--products">
+          <% for @link in @nav_links[:main_nav_links] %>
+            <% label = @link.key?(:submenu) ? [@link[:label], content_tag(:i, '', class: 'fa fa-angle-down hidden-xs hidden-sm')].join(' ').html_safe : @link[:label] %>
+
+            <li class="<%= @link.key?(:submenu) ? 'menuItem dropdown' : 'menuItem' %>">
+              <%=link_to( label, @link[:link] || '#', data: @link[:data] || {}, class: @link.key?(:submenu) ? 'dropdown-toggle nav--toggle' : '' ) %>
+              <% if @link.key?(:submenu) %>
+                <div class='dropdown-menu'>
+                  <ul class='nav nav-justified nav--submenu'>
+                    <% for @sublink in @link[:submenu] %>
+                      <li><%=menu_link_helper(@sublink)%></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+            </li>
+          <% end %>
+
+        </ul>
+      </div>
+  </div>
+</div>
+<%= render partial: 'modularized/external_link_modal' %>
