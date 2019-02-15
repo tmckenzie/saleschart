@@ -22,7 +22,6 @@ class ApplicationController < ActionController::Base
 
 
   def authenticate_user!(options = {})
-    p 'Here'
     if session[:mc_admin_id].nil? && current_user && current_user.account && current_user.account.disabled?
       session[:account_disabled] = 'true'
       sign_out(current_user)

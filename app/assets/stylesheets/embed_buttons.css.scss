@@ -1,0 +1,12 @@
+.button_container {
+  &.large a {
+    img {
+      max-width: 110%;
+    }
+  }
+
+  a.selected img {
+    border: 1px solid grey;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,47 @@
+.row
+  .col-xs-12
+    .row
+      %h3
+        = link_to 'Operations', admin_workbenchs_path
+        >
+        User Sessions
+    .row
+      %h3
+        API User Sessions
+    .row
+      .col-xs-12
+        = will_paginate @api_sessions, renderer: BootstrapPagination::Rails
+        %table.table.table-striped.table-hover.mc-table
+          %thead
+            %th Login
+            %th User Name
+            %th Npo
+            %th Created
+            %th Expire at
+          %tbody
+          - @api_sessions.each do |session|
+            %tr
+              %td.ellipsis-row= session.user.email
+              %td.ellipsis-row= session.user.name
+              %td.ellipsis-row= session.user.npo.try(:name)
+              %td= DateTimeFormatter.new(session.created_at).display_default_with_meridian
+              %td= DateTimeFormatter.new(session.expire_at).display_default_with_meridian
+    .row
+      %h3
+        Web User Sessions
+    .row
+      .col-xs-12
+        -#= will_paginate @web_sessions, renderer: BootstrapPagination::Rails
+        %table.table.table-striped.table-hover.mc-table
+          %thead
+            %th Login
+            %th User Name
+            %th Npo
+            %th Last Login
+          %tbody
+          - @web_sessions.each do |session|
+            %tr
+              %td.ellipsis-row= session.try(:user).try(:email)
+              %td.ellipsis-row= session.try(:user).try(:name)
+              %td.ellipsis-row= session.try(:user).try(:npo).try(:name)
+              %td= DateTimeFormatter.new(session.try(:user).try(:last_sign_in_at)).display_default_with_meridian

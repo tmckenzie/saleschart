@@ -1,0 +1,47 @@
+footer {
+  position: relative;
+  font-size: 90%;
+  border-top: 1px solid $gray-light;
+  text-align: center;
+  color: $gray;
+  margin-top: 4rem;
+  padding: 1.55rem calc((#{$nav_and_footer_left_right_spacing}) + 1.5rem) .6rem;
+  // +1.5rem to match the navbar default interior element padding
+  @media(max-width: $screen-lg-min) {
+    padding: inherit calc(((#{$nav_and_footer_left_right_spacing})/2) + 1.5rem);
+  }
+  @media(max-width: $screen-md-min) {
+    padding: inherit calc(((#{$nav_and_footer_left_right_spacing})/4) + 1.5rem);
+  }
+
+  ul {
+    text-align: right;
+    @media(max-width: $screen-sm-min) {
+      text-align: center;
+      padding-left: 0;
+    }
+  }
+
+  li {
+    display: inline;
+    margin-left: 5rem;
+    &:first-child {
+      margin-left: 0;
+    }
+    @media(max-width: $screen-sm-min) {
+      margin-left: 2rem;
+    }
+  }
+
+  a {
+    color: $gray;
+  }
+
+  p {
+    float: left;
+    @media(max-width: $screen-sm-min) {
+      float: none;
+      text-align: center;
+    }
+  }
+}

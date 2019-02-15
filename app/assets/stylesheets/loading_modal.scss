@@ -1,0 +1,37 @@
+/* Borrowed from: http://stackoverflow.com/questions/1964839/jquery-please-wait-loading-animation
+   Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   speak for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.loading-modal {
+  display: none;
+  position: fixed;
+  z-index: 1060;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, .8) url('/assets/loading-wheel.gif') 50% 50% no-repeat;
+  .loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -132px;
+  }
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+.loading {
+  overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+.loading {
+  &.loading-modal {
+    display: block;
+  }
+}

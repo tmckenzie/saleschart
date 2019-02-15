@@ -1,0 +1,21 @@
+.file-field {
+  * {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 3.4rem;
+  }
+
+  .form-control {
+    width: calc(100% - 10rem) !important;
+    display: inline-block !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .btn {
+    width: 10rem !important;
+    margin: 0 0 .75rem -.4rem;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}

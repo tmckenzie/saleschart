@@ -1,0 +1,8 @@
+@import 'mixins/colors';
+@import 'public/mixins/bootstrap_with_overrides';
+
+body {
+  background-color: darken($medium_light_grey, 6);
+  margin-top: 25px;
+}
+

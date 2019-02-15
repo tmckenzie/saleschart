@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
   # root to: "home#index1"
   #root to: 'dashboard#index1'
-  resources :dashboard
+  resources :dashboard do
+    get :deferred
+  end
 
   namespace :admin do
     resources :users do
@@ -32,10 +34,14 @@ Rails.application.routes.draw do
     get :become, :on => :member
   end
 
+  resources :products , :only => [:index,  :show] do
+
+  end
+
   resource :vendor, :only => [] do
 
 
-    resources :sales,  :only => [:index, :new, :create, :show, :edit, :update] do
+    resources :sales, :only => [:index, :new, :create, :show, :edit, :update] do
 
     end
     resources :inventory

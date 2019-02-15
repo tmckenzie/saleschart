@@ -95,7 +95,7 @@ class AccountsController < ApplicationController
     component = params[:component]
     component_id = params[:team_id]
 
-    new_image = ImageService.new.create_image_for(component, component_id, file, @peer_fundraiser_team.campaigns_keyword.campaign.npo.account)
+    # new_image = ImageService.new.create_image_for(component, component_id, file, @peer_fundraiser_team.campaigns_keyword.campaign.npo.account)
     # @peer_fundraiser.update_attributes(file_attr => file)
     image_url = new_image.shared_image.shared_img.url
     respond_to do |format|

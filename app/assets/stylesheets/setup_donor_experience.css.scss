@@ -1,0 +1,104 @@
+
+$scale: 0.7;
+
+.tab-content {
+
+}
+
+//.de-transform-preview {
+//  width: 1600px;
+////  height: 730px;
+//  @include scale(0.5);
+//  -moz-transform-origin: top left;
+//  -webkit-transform-origin: top left;
+//  -o-transform-origin: top left;
+//  -ms-transform-origin: top left;
+//  transform-origin: top left;
+//}
+//
+//.de-iphone4skin {
+//  margin-left: 8px;
+//  background: url('#{image_path('white_iphone.png')}') no-repeat;
+//  background-size: 420px 730px;
+//  width: #{420}px;
+//  height: #{730}px;
+//  position: relative;
+//}
+//
+//.de-iphone4skin iframe {
+//  position: relative;
+//  top: 7.7em;
+//  left: 3.0em;
+//}
+
+.transform-preview {
+  //      width: 1600px;
+  //      height: 730px;
+  @include scale($scale);
+  //-moz-transform-origin: top left;
+  //-webkit-transform-origin: top left;
+  //-o-transform-origin: top left;
+  //-ms-transform-origin: top left;
+  transform-origin: top left;
+  &.smaller-preview {
+    @include scale(0.5);
+    @media (min-width: 991px) {
+      width: 132rem;
+    }
+  }
+}
+
+.alt-transform-preview {
+  display: none;
+  width: 600px - 200px;
+  height: 730px - 200px;
+  padding: 100px;
+}
+
+.mc-modernizr-nope {
+  .alt-transform-preview {
+    display: block;
+  }
+  .transform-preview {
+    display: none;
+  }
+  //.de-transform-preview {
+  //  display: none;
+  //}
+}
+
+.iphone4skin {
+  margin: 1rem;
+  background: url('#{image_path('grey_iphone.svg')}') no-repeat;
+  background-size: 39rem 78.5rem;
+  width: 39rem;
+  height: 78.5rem;
+  position: relative;
+}
+
+.iphone4skin iframe {
+  position: relative;
+  top: 8.5rem;
+  left: 2.3rem;
+  height: 60.7rem;
+  width: 34.2rem;
+}
+
+.negative-top {
+  // position: relative with negative top instead of negative margin-top because the latter does not work in firefox
+  position: relative;
+  top: -330px;
+}
+
+iframe.no-scrolling {
+  overflow: hidden;
+}
+
+.donation_path_box {
+  background-color: #F5F5F5;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+}

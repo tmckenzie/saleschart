@@ -1,0 +1,10 @@
+.popover-content {
+  font-size: 14px;
+  white-space: normal;
+}
+
+.in {
+  &.collapse {
+    overflow: visible;
+  }
+}

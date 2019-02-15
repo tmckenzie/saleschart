@@ -17,6 +17,7 @@ module RailsBootstrap
     config.autoload_paths += Dir["#{config.root}/lib/**/"] - Dir["#{config.root}/lib/generators/**/"]
     config.autoload_paths += Dir["#{config.root}/app/models/filters/**/"]
     config.autoload_paths += Dir["#{config.root}/app/exhibits/"]
+    config.autoload_paths += Dir["#{config.root}/lib/one_time/"]
     config.autoload_paths += Dir["#{config.root}/app/components/"]
     config.autoload_paths += Dir["#{config.root}/app/pages/**"]
     config.autoload_paths += Dir["#{config.root}/app/models/concerns/"]
@@ -26,6 +27,20 @@ module RailsBootstrap
 
     # config.eager_load_paths << Rails.root.join('app', 'decorators', 'concerns')
     config.action_controller.permit_all_parameters = true
+
+    config.assets.enabled = true
+
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
+
+    # CSS & JS Manifest files that should be precompiled
+    config.assets.precompile += ['admin_build.css', 'mc-gen-message-builder.css', 'private/default_stylesheets.css', 'registration/manifest.css',
+                                 'free_registration/manifest.css', 'inactive_keyword/inactive_keyword.css',
+                                 'mobile/manifest.css','public/default_stylesheets.css',
+                                 'widgets/widget-modal.css', 'widgets/pledging-widget.css', 'public/themes/original.css',
+                                 'admin_build.js', 'graph.js', 'modularized/workbench.js', 'app_build.js',
+                                 'simple_require_jquery.js', 'modularized/manifest.js', 'mobile.js',
+                                 'private/default_javascripts.js']
 
 
     config.generators do |g|

@@ -1,0 +1,318 @@
+@import 'mixins/colors';
+@import 'bootstrap/mixins';
+
+div.mc-mobilecause-widget,
+div.mc-mobilecause-widget div.mc-layout,
+div.mc-mobilecause-widget div.mc-layout
+div.mc-mobilecause-widget div.mc-layout p,
+div.mc-mobilecause-widget div.mc-layout p.mc-legal,
+div.mc-mobilecause-widget div.mc-layout div.mc-form,
+div.mc-mobilecause-widget div.mc-layout div.mc-marquee,
+div.mc-mobilecause-widget div.mc-layout div.mc-marquee p,
+div.mc-mobilecause-widget div.mc-layout div.mc-response,
+div.mc-mobilecause-widget div.mc-layout div.mc-response p,
+div.mc-mobilecause-widget div.mc-layout div.mc-marquee div.mc-logo,
+div.mc-mobilecause-widget div.mc-layout div.mc-marquee div.mc-call-to-action,
+div.mc-mobilecause-widget div.mc-layout div.mc-marquee div.mc-call-to-action div.mc-header,
+div.mc-mobilecause-widget div.mc-layout div.mc-marquee div.mc-call-to-action p.mc-calculated,
+div.mc-mobilecause-widget div.mc-layout div.mc-footer,
+div.mc-mobilecause-widget div.mc-layout div.mc-form form,
+div.mc-mobilecause-widget div.mc-layout div.mc-form form input,
+div.mc-mobilecause-widget div.mc-layout div.mc-form form div.mc-fields,
+div.mc-mobilecause-widget div.mc-layout div.mc-form form div.mc-fields div,
+div.mc-mobilecause-widget div.mc-layout div.mc-form form div.mc-fields div input,
+div.mc-mobilecause-widget div.mc-layout div.mc-form form div.mc-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  text-align: left;
+  font-weight: normal;
+  font-family: sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  width: auto;
+  height: auto;
+}
+div.mc-mobilecause-widget.mc-pledging-widget {
+  $column_width : 225px;
+  $between_marquee_and_body: 10px;
+  $container_padding: 20px;
+  $border_width: 1px;
+  $background_grey: #ececec;
+  $border_grey: #cecece;
+  clear: both;
+  display: inline;
+  zoom: 1;
+
+  @mixin color-change {
+    &.mc-grey {background-color: $background_grey;}
+    &.mc-white {background-color: $white;}
+    &.mc-transparent {border-color: transparent; background-color: transparent;}
+    &.mc-white-text {
+      color: $white !important;
+      .mc-body .mc-legal a {
+        color: $white !important;
+        text-decoration: underline;
+      }
+    }
+    &.mc-black-text {
+      color: black !important ;
+      .mc-body .mc-legal { color: $gray !important; }
+    }
+  }
+  @mixin mc-legal {
+    .mc-legal {
+      text-align: justify;
+      font-style: italic;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+  @mixin mc-power {
+    .mc-power {
+      display: block;
+      text-align: center;
+    }
+  }
+  @mixin mc-subscribe($width) {
+    color: $darker_grey;
+    background: $border_grey; /* Old browsers */
+    @include gradient-vertical($lighter_grey, $border_grey);
+    width: $width;
+    border: $border_width solid $border_grey !important;
+    text-transform: none;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  div.mc-layout {
+    height: auto;
+    .mc-marquee, .mc-body {
+      width: $column_width;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    div.mc-main {
+      @include color-change;
+
+      border: $border_width solid $border_grey;
+      border-radius: 15px;
+      padding: $container_padding;
+
+      .mc-marquee {
+        .mc-logo {
+          margin-bottom: 10px;
+          img {
+            border: none;
+            width: $column_width;
+          }
+        }
+        .mc-call-to-action {
+          .mc-header {
+            text-align: center;
+            font-weight: bold;
+            //padding-bottom: 5px;
+            //border-bottom: 1px solid $border_grey;
+            margin-bottom: 10px;
+          }
+          .mc-message {
+            font-style: italic;
+            text-align: justify;
+          }
+        }
+      }
+      .mc-response {
+        p {
+          text-align: center;
+          color: green;
+          &.mc-error {
+            color: red
+          }
+        }
+      }
+      .mc-form {margin-top: 0;}
+      .mc-form form {
+        div.mc-fields {
+          width: $column_width;
+          input {
+            font-size: 12px;
+            padding: 3px 5px;
+            border-radius: 6px;
+            border: $border_width solid $border_grey;
+            &.mc-error {
+              border-color: red !important;
+            }
+          }
+
+          div.mc-name, div.mc-phone, div.mc-button {
+            height: 26px;
+            margin-bottom: 10px;
+          }
+
+          div.mc-name input {
+            &.mc-first {
+              width: 92px;
+              margin-right: 3px;
+            }
+            &.mc-last {
+              width: 100px;
+            }
+          }
+
+          &.mc-button {
+            text-align: center;
+            width: $column_width;
+            .mc-amount {
+              display: inline;
+              input.mc-amount {
+                width: 75px;
+                margin-right: 15px;
+              }
+            }
+
+            span .mc-subscribe {
+              @include mc-subscribe(117px);
+            }
+
+          }
+
+          .mc-phone input {
+            width: 213px;
+          }
+        }
+      }
+
+      .mc-body .mc-footer {
+        @include mc-legal;
+        @include mc-power;
+      }
+    }
+
+  }// div.mc-layout.mc-horizontal
+
+  div.mc-layout.mc-horizontal {
+    [data-mc-layout=vertical], [data-mc-layout=slimline] {display: none;}
+
+    $horizontal_mystery_width: 6px;
+    width: ($container_padding * 2) + $between_marquee_and_body + ($column_width * 2) + $horizontal_mystery_width;
+    height: auto;
+    .mc-body {margin-left: $between_marquee_and_body;}
+  }
+
+  div.mc-layout.mc-vertical {
+    [data-mc-layout=horizontal], [data-mc-layout=slimline] {display: none;}
+    $vertical_mystery_width: 3px;
+    width: ($container_padding * 2) + $column_width + $vertical_mystery_width;
+    height: auto;
+    .mc-body {margin-top: $between_marquee_and_body;}
+  }
+
+  div.mc-layout.mc-slimline {
+    [data-mc-layout=vertical], [data-mc-layout=horizontal] {display: none;}
+
+    .mc-main {
+      $vertical_mystery_width: 3px;
+      width: $column_width;
+      height: auto;
+      .mc-body {
+        margin-top: $between_marquee_and_body;
+        @include mc-legal;
+        @include mc-power;
+      }
+
+      .mc-footer {
+        text-align: center;
+        .mc-form {
+          margin-bottom: 10px;
+          display: inline-block;
+          .mc-subscribe {
+            @include mc-subscribe(117px);
+          }
+          .mc-cancel {
+            color: $gray;
+            font-size: 11px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+    .mc-oneline {
+      @include color-change;
+      border: $border_width solid $border_grey;
+      border-radius: 7px;
+      padding: 2px 5px;
+
+      $base_width: 168px;
+      $header_width: 141px;
+      $name_width: 191px;
+      $amount_width: 65px;
+
+      &.mc-width-000 { width: $base_width; }
+      &.mc-width-100 { width: $base_width + $header_width; }
+      &.mc-width-010 { width: $base_width + $name_width; }
+      &.mc-width-001 { width: $base_width + $amount_width; }
+      &.mc-width-110 { width: $base_width + $header_width + $name_width; }
+      &.mc-width-011 { width: $base_width + $name_width + $amount_width; }
+      &.mc-width-101 { width: $base_width + $header_width + $amount_width; }
+      &.mc-width-111 { width: $base_width + $header_width + $name_width + $amount_width; }
+
+      .mc-form {
+        height: 25px;
+        margin-top: 2px;
+
+        form {
+          div {
+            display: inline-block;
+
+            &.mc-header {
+              width: 136px;
+              margin-right: 5px;
+              text-align: right;
+              font-weight: bold;
+            }
+
+            &.mc-name input {
+                width: 80px;
+            }
+
+            &.mc-phone input {
+              width: 110px;
+            }
+
+            &.mc-amount input {
+              width: 50px;
+            }
+          }
+
+          input {
+            font-size: 12px;
+            padding: 3px 5px;
+            border-radius: 6px;
+            border: $border_width solid $border_grey;
+            display: inline;
+            margin: 0;
+            margin-right: 3px;
+            line-height: 15px;
+            float: none;
+
+            &.mc-subscribe {
+              @include mc-subscribe(40px);
+            }
+            &.mc-error {
+              border-color: red !important;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+    display: none;
+  }
+
+}

@@ -8,7 +8,8 @@ module Dashboards
       #      :panel_3 => people_panel,
       # #       :panel_4 => bottom_panel
       # }
-      set_panels(['sales_panel', 'inventory_panel', 'people_panel'])
+      panels = set_panels(['sales_panel', 'inventory_panel', 'people_panel'])
+      panels.merge!({:panel_4 => bottom_panel})
 
     end
 
@@ -72,7 +73,7 @@ module Dashboards
       {
           partial: "dashboard/content_panel",
           rows: {
-              row_1: {partial: "dashboard/vendor/accounts_table", locals: {account_filter: model.account_filter(context.params.merge(:page => 'all'), context.current_ability), rows: model.accounts_table}}
+              row_1: {partial: "dashboard/vendor/products_panel", locals: {params: context.params, product_filter: model.product_filter(context.params.merge(:page => 'all'), context.current_ability), rows: model.products_table(context.params)}}
           }
       }
     end
@@ -137,8 +138,8 @@ module Dashboards
 
     def collect_messaging_rows
       [
-          ["Messages Sent (#{current_month})", "N/A"],
-          ['Messages Sent (All Time)', "N/A"]
+          ["Products Sold (#{current_month})", "N/A"],
+          ['Product Sold (All Time)', "N/A"]
       #["Messages Sent (#{current_month})", deferred_call_for(:total_messages_sent_this_month)],
       #['Messages Sent (All Time)', deferred_call_for(:total_messages_sent)]
       ]

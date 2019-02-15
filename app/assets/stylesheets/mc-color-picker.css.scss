@@ -1,0 +1,17 @@
+@mixin picker {
+  height: 13rem;
+  width: 13rem;
+  padding: .3rem .5rem;
+  background: $white;
+  border: 1px solid $light_grey;
+  border-radius: 4px;
+}
+
+.givenow .mc-picker {
+  @include picker;
+  margin-left: 175px;
+}
+
+.mc-picker {
+  @include picker;
+}

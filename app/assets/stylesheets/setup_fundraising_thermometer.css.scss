@@ -1,0 +1,38 @@
+#fundraising-thermometer {
+  #thermometer_preview {
+    height: 45rem;
+    iframe {
+      @include scale(0.5);
+      //-moz-transform-origin: top left;
+      //-webkit-transform-origin: top left;
+      //-o-transform-origin: top left;
+      //-ms-transform-origin: top left;
+      transform-origin: top left;
+      width: 130rem;
+      height: 85rem;
+    }
+  }
+
+  #alt_thermometer_preview {
+    display: none;
+    padding: 15rem 10rem;
+  }
+
+  .mc-modernizr-nope {
+    #alt_thermometer_preview {
+      display: block;
+    }
+    #thermometer_preview {
+      display: none;
+    }
+  }
+
+  .backgrounds a {
+    margin: .5rem .5rem 0 0;
+  }
+  .backgrounds a img {
+    width: 10rem;
+    height: 6rem;
+    margin-top: .85rem;
+  }
+}

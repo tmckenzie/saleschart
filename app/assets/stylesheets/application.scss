@@ -1,0 +1,297 @@
+@import 'jquery-ui';
+@import 'forms';
+@import 'mixins/browser_overrides';
+@import 'mixins/type_styles';
+@import 'private/mixins/bootstrap_with_overrides';
+@import 'font-awesome';
+@import 'mixins/colors';
+@import 'mixins/variables';
+@import 'mixins/jason_says_ponder_these';
+@import 'mixins/bootstrap4_cards';
+//@import 'registration/tall-form-fields';
+
+@import 'analytics';
+@import 'app_footer';
+@import 'app_navigation';
+@import 'bootstrap-sortable';
+@import 'constituent_list';
+@import 'dashboard';
+@import 'developer_portal';
+@import 'embed_buttons';
+@import 'file_field';
+@import 'givenow';
+@import 'loading_modal';
+@import 'margin_utilities';
+@import 'mc-color-picker';
+@import 'messages_calendar';
+@import 'modernizr-contents';
+@import 'multiselect_checkboxes';
+@import 'new_look';
+@import 'popover_tooltip';
+@import 'qr_codes';
+@import 'setup_donor_experience';
+@import 'setup_fundraising_thermometer';
+@import 'summary_list';
+@import 'summary_panel';
+@import 'calendar';
+@import 'tinymce/tinymce_overrides';
+@import 'plugins/Jcrop.min';
+@import 'plugins/jquery.circliful';
+
+body {
+  background-color: $white;
+  padding-top: 50px;
+}
+
+.no-border {
+  border: 0;
+}
+
+.icon-white {
+  color: $white;
+}
+
+.lead-large {
+  @include font-size(2.8);
+}
+//TODO bootstrap3 not sure this is actually used...it should be overwritten by bootstrap without the !important
+//input[readonly] {
+//  background-color: $white;
+//  cursor: pointer;
+//}
+
+.checkbox {
+  font-weight: normal;
+  &.disabled {
+    color: $light_grey;
+  }
+}
+
+label.checkbox, label.input-group-btn {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.multiselect label.checkbox:first-child, .input-group-addon label.checkbox:first-child {
+  margin-top: 1rem;
+}
+
+table.mc-table {
+  border: 1px solid $light_grey;
+
+  thead {
+    border-bottom: 1px solid $light_grey;
+  }
+  td, th {
+    border: none;
+  }
+  .number {
+    text-align: right;
+  }
+  .mc-btn {
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
+    background-color: $almost_white;
+  }
+}
+
+// Not Used
+//.well {
+//  .radioGroup
+//  {
+//    input.radioSpecial
+//    {
+//      width: 1.5em;
+//      height: 1.5em;
+//      margin-right: 1em;
+//      background-color: blue;
+//    }
+//    .radioDescription
+//    {
+//      margin-left: 1.5em;
+//    }
+//  }
+//  .footnote {
+//    background-color: #f1f1f1;
+//    padding: 1em;
+//  }
+//}
+
+.well-hover-background {
+  background-color: darken($light-grey, 2);
+}
+
+.modal-block {
+  border: none;
+  background-color: $white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+body.modal-open .modal.in {
+    display: flex !important;
+    height: 100%;
+
+  .modal-dialog {
+      margin: auto;
+  }
+}
+
+.square-corners {
+  border-radius: 0;
+}
+
+//.mc-box-shadow {
+//  @include box-shadow(3px 3px 1px rgba(0, 0, 0, 0.075));
+//}
+
+.fundraiser_container {
+  //font-family: 'Open Sans', sans-serif;
+  border: 1px solid $medium_light_grey;
+  border-radius: 4px;
+  margin-bottom: 30px;
+
+  //.btn-info {
+  //  font-family: 'Open Sans', sans-serif;
+  //  color: $white;
+  //  background-image: none;
+  //  text-shadow: none;
+  //}
+  //
+  //.btn-success {
+  //  font-family: 'Open Sans', sans-serif;
+  //  color: $white;
+  //  background-image: none;
+  //  text-shadow: none;
+  //  padding: 7px 15px;
+  //  box-shadow: none;
+  //}
+  //
+  //.btn-default {
+  //  font-family: 'Open Sans', sans-serif;
+  //  background-color: $white;
+  //  color: black;
+  //  background-image: none;
+  //  text-shadow: none;
+  //  padding: 7px 15px;
+  //  box-shadow: none;
+  //}
+
+  .left-side {
+    padding: 2rem;
+    padding-top: 1rem;
+  }
+
+  .right-side {
+    padding: 30px;
+    background-color: #FAFAFA;
+    border-left: 1px solid $medium_light_grey;
+
+    iframe {
+      min-height: 51rem;
+      border: 1px solid $lighter_grey !important;
+    }
+
+    form {
+      background-color: $white;
+      padding: 20px;
+      padding-bottom: 25px;
+      border-image: none;
+      border: 1px solid $lighter_grey;
+      border-radius: 4px;
+    }
+
+    #signup_cta {
+      font-size: 1.3em;
+      line-height: 1.4em;
+      color: $darker_grey;
+      padding: 10px 0;
+    }
+
+    input {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    input[type="text"] {
+      padding: 17px 10px;
+    }
+  }
+
+  pre a {
+    color: $gray-light;
+  }
+
+  .code {
+    color: $gray-light;
+    background-color: $white;
+  }
+
+  .bottom-side {
+    background-color: #F3F3F3;
+    border-top: 1px solid $medium_light_grey;
+    padding: 15px;
+    text-align: right;
+    @include box-sizing(border-box);
+  }
+
+}
+
+.fundraiser_container .fundraiser_signup_upload {
+  padding-bottom: 20px;
+
+  input[type=text], input[type=file] {
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 40px;
+  }
+
+  .fakefile {
+    width: 100%;
+  }
+  .file_field button {
+    position: absolute;
+    right: 0;
+  }
+  .fakefile button {
+    padding: 9px;
+  }
+  .btn {
+    position: absolute;
+    right: 0;
+  }
+}
+
+#move_donation_info {
+  font-style: italic;
+  color: $darker_grey;
+}
+
+//#offline-form {
+//  label {
+//    font-weight: bold;
+//    padding-top: 10px;
+//  }
+//}
+
+
+.affix {
+  top: 8rem;
+}
+
+#ui-datepicker-div {
+  z-index: 3 !important;
+}
+
+.profile-picture {
+  .btn-default.active, .btn-default:hover {
+    img {
+      background-color: white;
+    }
+  }
+  .btn-default:not(.active):not(:hover) {
+    img {
+      background-color: #ebebeb;
+    }
+  }
+}

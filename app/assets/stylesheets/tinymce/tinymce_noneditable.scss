@@ -1,0 +1,12 @@
+@import 'private/mixins/bootstrap_with_overrides';
+@import 'mixins/colors';
+
+.mce-content-body {
+  padding: 1rem;
+}
+
+.mceNonEditable {
+  background-color: $brand-primary;
+  color: $white;
+  padding: .25rem;
+}

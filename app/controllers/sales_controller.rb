@@ -9,7 +9,7 @@ class SalesController < ApplicationController
       f.series(:name => 'Home', :data => [1, 3, 4, 3, 3, 5, 4, -46, 7, 8, 8, 9, 9, 0, 0, 9])
     end
 
-    @pie = Charts::PieView.new.simple_pie( QueryManagers::MockQueryManager.new().sales_by_dept(1))
+    @pie = Charts::PieView.new.simple_pie(QueryManagers::Mock::MockQueryManager.new().sales_by_dept(1))
     # @pie = LazyHighCharts::HighChart.new('pie') do |f|
     #   f.chart({:defaultSeriesType => "pie", :backgroundColor => "transparent", :margin => [30, 30, 30, 30],
     #            :spacingTop => 0, :spacingBottom => 0, :spacingLeft => 0, :spacingRight => 0})
@@ -50,6 +50,34 @@ class SalesController < ApplicationController
                    {:name => 'Nov', :y => 19, :color => 'blue'}
                ],
                :center => [100, 80], :size => 100, :showInLegend => false)
+    end
+    # new Highcharts("chart")
+    #         .SetXAxis(new XAxis { Categories = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" } })
+    #         .SetYAxis(new YAxis { Title = new YAxisTitle { Text = "Sales" } })
+    #         .SetSeries(new Series { Data = new Data(new object[] { 20, 30, 40, 50, 20, 60, 14, 72, 30, 35, 10, 20 }), Name = "Sales" })
+    #         .SetTitle(new Title { Text = "Sales Data" })
+    #         .InitChart(new DotNet.Highcharts.Options.Chart { DefaultSeriesType = DotNet.Highcharts.Enums.ChartTypes.Column });
+    # }
+
+    last_year_start_date ||= Date.today.prev_year.beginning_of_year
+    last_year_end_date ||= Date.today.prev_year.end_of_year
+    start_date ||=  Date.today.beginning_of_year
+    end_date ||=  Date.today.end_of_year
+
+    # data = QueryManagers::Mock::MockQueryManager.new.monthly_product_sales(start_date,end_date)
+    data = QueryManagers::Mysql::SqlQueryManager.new.monthly_product_sales(start_date,end_date)
+    @chart3 = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(:text => "Sales Data #{start_date.year}")
+      f.xAxis(:categories => ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+      f.series(:name => "Sales", :yAxis => 0, :data => data)
+      f.chart({:defaultSeriesType => "column"})
+    end
+    data = QueryManagers::Mysql::SqlQueryManager.new.monthly_product_sales(last_year_start_date,last_year_end_date)
+    @chart4 = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(:text => "Sales Data #{last_year_end_date.year}")
+      f.xAxis(:categories => ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+      f.series(:name => "Sales", :yAxis => 0, :data => data)
+      f.chart({:defaultSeriesType => "column"})
     end
 
     @chart2 = LazyHighCharts::HighChart.new('graph') do |f|

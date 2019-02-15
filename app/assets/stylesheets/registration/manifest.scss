@@ -1,0 +1,35 @@
+// Twitter Bootstrap
+@import 'mixins/colors';
+@import 'mixins/type_styles';
+@import 'public/mixins/bootstrap_with_overrides';
+@import 'margin_utilities';
+@import 'mixins/variables';
+@import 'app_navigation';
+
+html {
+  font-size: 62.5%; //this makes each rem unit approximately 10px
+}
+
+body {
+  background-color: $white;
+  font-size: inherit;
+  @include font-size(1.4);
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+  }
+}
+
+.disabled-account-hero {
+  background: #DFDFDF image-url("login-left.png") no-repeat left center;
+  border: #DFDFDF 1px solid;
+  border-radius: 10px;
+  font-size: .9em;
+  font-size: 12px;
+  min-height: 200px;
+  padding: 30px;
+}
+
+.g-recaptcha div {
+  margin: 0 auto;
+}

@@ -1,0 +1,23 @@
+.row.margin-top--lv4
+  .col-md-10.col-md-offset-1
+    .well
+      %dl.dl-horizontal
+        %dt Product:
+        %dd= @product.description
+
+        %dt Asin:
+        %dd= @product.asin
+
+        %dt Item Number:
+        %dd= @product.item_number
+.row
+  .col-md-6
+    .well
+      Current Year Sales
+      .div
+        = high_chart("my_id1", @current_year_pie)
+  .col-md-6
+    .well
+      Last Year Sales
+      .div
+        = high_chart("my_id2", @last_year_pie)

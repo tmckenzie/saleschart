@@ -1,0 +1,56 @@
+.row
+  .col-xs-12
+    %strong.pull-right
+      %em
+    %br
+.row
+  .col-xs-12
+    %h3
+      Manage Products
+.row
+  .col-xs-6
+    = form_for product_filter, url: {}, method: :get, html: { class: 'form-inline' } do |f|
+      .form-group
+        = f.text_field :search_string, class: 'form-control', title: "Advanced search options e.g (name:acc_name;legacy:true;status:new;email:xyz)"
+      = f.submit 'Search', class: 'btn btn-primary btn-form-control'
+      = link_to products_path, class: 'btn btn-danger btn-form-control' do
+        %i.fa.fa-remove
+        Clear
+
+%br
+.row
+  .col-xs-12{ align: "center" }
+    = will_paginate rows, renderer: BootstrapPagination::Rails
+  .col-xs-12
+    %table.table.table-striped.table-hover.table-condensed.mc-table
+      %thead
+        %tr
+          %th Product Asin
+          %th Product Description
+          %th Product Item
+          -#%th= "Collected In #{exhibitor.previous_month}"
+          -#%th= "Collected In #{exhibitor.current_month}"
+          -#%th= 'Collected YTD'
+          -#%th= "Messages Sent In #{exhibitor.current_month}"
+          %th.text-center.btn-group-width Actions
+
+      %tbody
+        - if rows.present?
+          - rows.each do |row|
+            %tr
+              %td
+                %strong= link_to row[:asin], product_path(row[:id])
+              %td= row[:description]
+              %td= row[:item_number]
+              %td
+                -#.btn-group.pull-right
+                -#  = link_to donations_path('csv', params.merge(npo_id: row[:npo][:id])), class: 'btn btn-default btn-xs', data: { toggle: 'tooltip' }, title: 'Get Report' do
+                -#    %i.fa.fa-download.text-info
+                -#  - if row[:npo][:admin_id].present?
+                -#    = link_to become_user_path(row[:npo][:admin_id]), class: 'btn btn-default btn-xs', data: { toggle: 'tooltip' }, title: 'Login as Admin' do
+                -#      %i.fa.fa-sign-in.text-success
+        - else
+          %td.text-center{ colspan: 6 }
+            %em There are no products to show.
+    .col-xs-12{ align: "center" }
+      = will_paginate rows, renderer: BootstrapPagination::Rails

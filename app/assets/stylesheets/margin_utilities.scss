@@ -1,0 +1,195 @@
+@import 'bootstrap/variables';
+
+/**
+ * Adds margins for the bootstrap
+ */
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.padding-top-none {
+  padding-top: 0 !important;
+}
+
+.padding-top-small {
+  padding-top: .3rem;
+}
+
+.padding-top-medium {
+  padding-top: .75rem;
+}
+
+.padding-top-large {
+  padding-top: 1.25rem;
+}
+
+.padding-top-xlarge {
+  padding-top: 1.85rem;
+}
+
+.padding-right-none {
+  padding-right: 0 !important;
+}
+
+.padding-right-small {
+  padding-right: .3rem !important;
+}
+
+.padding-right-medium {
+  padding-right: .75rem !important;
+}
+
+.padding-right-large {
+  padding-right: 1.25rem !important;
+}
+
+.padding-right-xlarge {
+  padding-right: 1.85rem !important;
+}
+
+.padding-bottom-none {
+  padding-bottom: 0 !important;
+}
+
+.padding-bottom-small {
+  padding-bottom: .3rem;
+}
+
+.padding-bottom-medium {
+  padding-bottom: .75rem;
+}
+
+.padding-bottom-large {
+  padding-bottom: 1.25rem;
+}
+
+.padding-bottom-xlarge {
+  padding-bottom: 1.85rem;
+}
+
+.padding-left-none {
+  padding-left: 0 !important;
+}
+
+.padding-left-none-sm {
+  @media (min-width: $screen-sm) {
+    padding-left: 0 !important;
+  }
+}
+
+.padding-left-small {
+  padding-left: .3rem !important;
+}
+
+.padding-left-medium {
+  padding-left: .75rem !important;
+}
+
+.padding-left-large {
+  padding-left: 1.25rem !important;
+}
+
+.padding-left-xlarge {
+  padding-left: 1.85rem !important;
+}
+
+.top-none {
+  margin-top: 0 !important;
+}
+
+.top-small {
+  margin-top: .3rem !important;
+}
+
+.top-medium {
+  margin-top: .75rem !important;
+}
+
+.top-large {
+  margin-top: 1.25rem !important;
+}
+
+.top-xlarge {
+  margin-top: 1.85rem !important;
+}
+
+.bottom-none {
+  margin-bottom: 0 !important;
+}
+
+.bottom-small {
+  margin-bottom: .3rem !important;
+}
+
+.bottom-medium {
+  margin-bottom: .75rem !important;
+}
+
+.bottom-large {
+  margin-bottom: 1.25rem !important;
+}
+
+.bottom-xlarge {
+  margin-bottom: 1.85rem !important;
+}
+
+.left-none {
+  margin-left: 0 !important;
+}
+
+.left-negative {
+  margin-left: -2.5rem !important;
+}
+
+.left-negative-small {
+  margin-left: -.3rem !important;
+}
+
+.left-negative-medium {
+  margin-left: -.75rem !important;
+}
+
+.left-negative-large {
+  margin-left: -1.25rem !important;
+}
+
+.left-negative-xlarge {
+  margin-left: -1.85rem !important;
+}
+
+.left-small {
+  margin-left: .3rem !important;
+}
+
+.left-medium {
+  margin-left: .75rem !important;
+}
+
+.left-large {
+  margin-left: 1.25rem !important;
+}
+
+.left-xlarge {
+  margin-left: 1.85rem !important;
+}
+
+.right-none {
+  margin-right: 0 !important;
+}
+
+.right-small {
+  margin-right: .3rem !important;
+}
+
+.right-medium {
+  margin-right: .75rem !important;
+}
+
+.right-large {
+  margin-right: 1.25rem !important;
+}
+
+.right-xlarge {
+  margin-right: 1.85rem !important;
+}

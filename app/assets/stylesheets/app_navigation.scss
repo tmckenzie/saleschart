@@ -1,0 +1,38 @@
+.navbar {
+  padding: 0 calc(#{$nav_and_footer_left_right_spacing});
+  .navbar-nav > li > .dropdown-menu {
+    min-width: 100%;
+  }
+
+  .mc-logo {
+    margin-top: .6rem;
+  }
+
+  .navbar-brand {
+    padding: 1rem 0 0 0;
+    height: auto;
+  }
+
+  .navbar-npo-logo {
+    margin-left: 1.3rem;
+  }
+}
+
+@media(max-width: $screen-lg-min) {
+  .navbar {
+    padding: 0 calc((#{$nav_and_footer_left_right_spacing})/2);
+  }
+}
+
+@media(max-width: $screen-md-min) {
+  .navbar {
+    padding: 0 calc((#{$nav_and_footer_left_right_spacing})/4);
+  }
+}
+
+.secondary-navbar {
+  font-size: 1.8rem;
+  a {
+    color: lighten($grey, 6);
+  }
+}

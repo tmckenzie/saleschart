@@ -1,0 +1,24 @@
+@import "shared/bootstrap_variables";
+
+@import "bootstrap";
+
+@import "shared/bootstrap_style_overrides";
+
+.table-responsive {
+  overflow-x: scroll;
+}
+
+.form-control, .input-group-addon, .form-group {
+  margin-bottom: .75rem;
+}
+
+label {
+  display: grid;
+  margin-bottom: .5rem;
+  font-weight: normal;
+  padding-top: 0;
+}
+
+.has-feedback .form-control-feedback {
+  top: 0;
+}

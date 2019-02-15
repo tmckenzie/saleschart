@@ -1,0 +1,50 @@
+.mce-panel, .mce-listbox, .mce-btn-has-text {
+  border-radius: $border-radius-base;
+  .mce-text, i {
+    color: $gray;
+  }
+  iframe {
+    border-radius: 0;
+  }
+  .mce-stack-layout-item {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+}
+
+.mce-btn button {
+  margin: 0;
+}
+
+.mce-btn-group .mce-btn {
+  margin-left: 0;
+}
+
+.mce-btn-group:not(:first-child) {
+  margin: 0;
+  padding: 0;
+}
+
+.mce-menu {
+  max-height: 250px;
+}
+
+input, textarea {
+  border-radius: $border-radius-base;
+}
+
+.mce-listbox button .mce-txt {
+  max-width: 175px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.mce-menubtn.mce-fixed-width span {
+  width: auto !important;
+}
+
+.mce-primary {
+  background-color: $brand-primary !important;
+}

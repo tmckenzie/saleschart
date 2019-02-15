@@ -57,6 +57,29 @@ module Dashboards
         AccountFilter.new attrs
       end
     end
+    def product_filter(params, ability)
+      @product_filter ||= begin
+        attrs = (params[:account_filter] || {}).merge(current_ability: ability)
+        ProductFilter.new attrs
+      end
+    end
+
+    def products_table(params)
+      rows = []
+      page = params[:page].present? ? params[:page] : 1
+     @product_filter.products.order('products.asin').paginate(page: page, per_page: 30)
+     # @product_filter.products.order('products.asin').each do |product|
+     #    rows << {
+     #        product: {id: product.id, asin: product.asin, description: product.description, item_number: product.item_number},
+     #        # total_collected_previous_month: ReportCalculation.total_collected_amount(npo, 1.month.ago.utc.beginning_of_month, 1.month.ago.utc.end_of_month),
+     #        # total_collected_this_month: ReportCalculation.total_collected_amount(npo, Time.now.utc.beginning_of_month),
+     #        # total_collected_ytd: ReportCalculation.total_collected_amount(npo, Time.now.utc.beginning_of_year),
+     #        # total_offline_ytd: ReportCalculation.total_offline_amount(npo, Time.now.utc.beginning_of_year),
+     #        # total_messages_this_month: 0 #ReportCalculation.total_messages_sent(npo, Time.now.utc.beginning_of_month)
+     #    }
+     #  end
+
+    end
 
     def accounts_table
       rows = []

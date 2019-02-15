@@ -1,0 +1,43 @@
+$white:                #FFFFFF;
+$almost_white:         #F4F4F4;
+$lighter_grey:         #E8E8E8;
+$light_grey:           #D9D9D9;
+$medium_light_grey:    #DDDDDD;
+$medium_grey:          #807E7E;
+$dark_grey:            #6E6365;
+$darker_grey:          #454545;
+$grey:                 #666666;
+$gray:                 #666666;
+$dark_red:             #630709;
+$error_red:            #D42F27;
+$mc_logo_red:          #B32024;
+$red:                  #FF0000;
+$lighter_blue:         #3A85A9;
+$blue:                 #0067B4;
+$dark_blue:            #0000FF;
+$light_green:          #4FCF20;
+$bright_green:         #00FF00;
+$green:                #3A9A18;
+$black:                #000000;
+$give_now_blue:        #00B2D7;
+$panel_grey:           #F7F7F7;
+$panel_blue:           #2F96B4;
+$mc_blue:              #1E92D1;
+$mc_blue_green:        #24AFB2;
+$panel_light_teal:     #F4FAFB;
+
+$chart_green:          #72c380;
+$chart_green_pending:  #38B0AA;
+$chart_purple:         #8963AE;
+$chart_blue:           #62A9DD;
+$chart_blue_pending:   #4353BF;
+$chart_grey:           #CDCDCD;
+
+$bronco_orange:        #FF652B;
+$bronco_blue:          #002E4D;
+$viking_purple:        #3B0160;
+$viking_gold:          #F0BF00;
+
+.background-lighter-grey {
+  background-color: $lighter_grey;
+}

@@ -1,0 +1,26 @@
+
+.file_field {
+  position: relative;
+  .loading {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $white url('/assets/loading-wheel.gif') center center no-repeat;
+    @include opacity(80);
+    z-index: 10;
+  }
+  .fakefile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  //input.file {
+  //  position: relative;
+  //  text-align: right;
+  //  @include opacity(0);
+  //  width: 100%;
+  //  z-index: 1;
+  //}
+}

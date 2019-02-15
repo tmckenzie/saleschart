@@ -8,10 +8,25 @@ class DashboardController < ApplicationController
 
   end
 
+  def show
+    p "in deffered"
+    deferred_key = params['key']
+    deferred_value = @exhibitor.send_deferred_key(deferred_key)
+    # deferred_val ue =2
+    respond_to do |format|
+      format.json do
+        render json: {
+            request.fullpath => deferred_value
+        }
+      end
+      format.js do
+        render_remote_content_strings(deferred_value)
+      end
+    end
+  end
+
   def index
-    p "here"
-    p @exhibitor.layout
-   p  @exhibitor.action
+
     render layout: @exhibitor.layout, action: @exhibitor.action
     #    p @nav_links
     #    @h = LazyHighCharts::HighChart.new('graph') do |f|
@@ -79,6 +94,24 @@ class DashboardController < ApplicationController
 
   def dashboards
 
+  end
+
+  def deferred
+    p raise Exception
+    p "in deffered"
+    deferred_key = params['key']
+     deferred_value = @exhibitor.send_deferred_key(deferred_key)
+    deferred_value =2
+    respond_to do |format|
+      format.json do
+        render json: {
+            request.fullpath => deferred_value
+        }
+      end
+      format.js do
+        render_remote_content_strings(deferred_value)
+      end
+    end
   end
 
   #p "here"

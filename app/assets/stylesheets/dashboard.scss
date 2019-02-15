@@ -1,0 +1,11 @@
+
+.code {
+  font-size: 75%;
+}
+.truncate_keyword a {
+    width: 150px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

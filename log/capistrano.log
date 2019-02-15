@@ -3878,3 +3878,411 @@ mkdir: created directory '/var/www/apps/mmp/shared/config'
   INFO [26f2c068] Running /usr/local/rvm/bin/rvm ruby-2.2.10@mmp do bundle install --path /var/www/apps/mmp/shared/bundle --jobs 4 --without development test --deployment --quiet as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
  DEBUG [26f2c068] Command: cd /var/www/apps/mmp/releases/20190206232014 && /usr/local/rvm/bin/rvm ruby-2.2.10@mmp do bundle install --path /var/www/apps/mmp/shared/bundle --jobs 4 --without development test --deployment --quiet
  DEBUG [ef1a3826] 	Unknown switches '--jobs'
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-02-15 09:56:00 -0700 cap production deploy:migrations
+  INFO ---------------------------------------------------------------------------
+ DEBUG [31483404] Running /usr/bin/env which passenger as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [31483404] Command: /usr/bin/env which passenger
+ DEBUG [861604f0] 	/usr/bin/passenger
+ DEBUG [861604f0] Finished in 0.841 seconds with exit status 0 (successful).
+ DEBUG [788fb9c3] Running /usr/local/rvm/bin/rvm version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [788fb9c3] Command: /usr/local/rvm/bin/rvm version
+ DEBUG [c11eac01] 	rvm 1.29.7 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [c11eac01] Finished in 0.373 seconds with exit status 0 (successful).
+ DEBUG [5f9e5d2a] Running /usr/local/rvm/bin/rvm current as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [5f9e5d2a] Command: /usr/local/rvm/bin/rvm current
+ DEBUG [c538b66c] 	ruby-2.2.5
+ DEBUG [c538b66c] Finished in 0.374 seconds with exit status 0 (successful).
+ DEBUG [3595a74a] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [3595a74a] Command: /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version
+ DEBUG [b1616f3b] 	ruby 2.2.5p319 (2016-04-26 revision 54774) [x86_64-linux]
+ DEBUG [b1616f3b] Finished in 0.573 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-02-15 09:56:23 -0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [9176413c] Running /usr/bin/env which passenger as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [9176413c] Command: /usr/bin/env which passenger
+ DEBUG [da32f633] 	/usr/bin/passenger
+ DEBUG [da32f633] Finished in 0.828 seconds with exit status 0 (successful).
+ DEBUG [d595c111] Running /usr/local/rvm/bin/rvm version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [d595c111] Command: /usr/local/rvm/bin/rvm version
+ DEBUG [7c3bd79d] 	rvm 1.29.7 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [7c3bd79d] Finished in 0.375 seconds with exit status 0 (successful).
+ DEBUG [314b0d46] Running /usr/local/rvm/bin/rvm current as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [314b0d46] Command: /usr/local/rvm/bin/rvm current
+ DEBUG [f2207010] 	ruby-2.2.5
+ DEBUG [f2207010] Finished in 0.377 seconds with exit status 0 (successful).
+ DEBUG [da144061] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [da144061] Command: /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version
+ DEBUG [6d84fddf] 	ruby 2.2.5p319 (2016-04-26 revision 54774) [x86_64-linux]
+ DEBUG [6d84fddf] Finished in 0.555 seconds with exit status 0 (successful).
+  INFO [1f2b57c0] Running /usr/bin/env mkdir -p /tmp as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [1f2b57c0] Command: /usr/bin/env mkdir -p /tmp
+  INFO [dd9fef57] Finished in 0.210 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-mmp-production-timmckenzie.sh 0.0%
+  INFO Uploading /tmp/git-ssh-mmp-production-timmckenzie.sh 100.0%
+  INFO [feb58642] Running /usr/bin/env chmod 700 /tmp/git-ssh-mmp-production-timmckenzie.sh as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [feb58642] Command: /usr/bin/env chmod 700 /tmp/git-ssh-mmp-production-timmckenzie.sh
+  INFO [67326698] Finished in 0.206 seconds with exit status 0 (successful).
+  INFO [b40fc098] Running /usr/bin/env git ls-remote git@github.com:tmckenzie/saleschart.git HEAD as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [b40fc098] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git ls-remote git@github.com:tmckenzie/saleschart.git HEAD )
+ DEBUG [1d631e64] 	354f7a8f8a43c93a50fc59cd6427ccb7a6528565	HEAD
+  INFO [1d631e64] Finished in 0.624 seconds with exit status 0 (successful).
+  INFO [3105c3ec] Running /usr/bin/env mkdir -p /var/www/apps/mmp/shared /var/www/apps/mmp/releases as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [3105c3ec] Command: /usr/bin/env mkdir -p /var/www/apps/mmp/shared /var/www/apps/mmp/releases
+  INFO [8b09f71b] Finished in 0.201 seconds with exit status 0 (successful).
+  INFO [8c650f2e] Running /usr/bin/env mkdir -p /var/www/apps/mmp/shared/log /var/www/apps/mmp/shared/tmp/pids /var/www/apps/mmp/shared/tmp/cache /var/www/apps/mmp/shared/tmp/sockets /var/www/apps/mmp/shared/vendor/bundle /var/www/apps/mmp/shared/public/system /var/www/apps/mmp/shared/public/uploads /var/www/apps/mmp/shared/public/assets as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [8c650f2e] Command: /usr/bin/env mkdir -p /var/www/apps/mmp/shared/log /var/www/apps/mmp/shared/tmp/pids /var/www/apps/mmp/shared/tmp/cache /var/www/apps/mmp/shared/tmp/sockets /var/www/apps/mmp/shared/vendor/bundle /var/www/apps/mmp/shared/public/system /var/www/apps/mmp/shared/public/uploads /var/www/apps/mmp/shared/public/assets
+  INFO [dbec4d3c] Finished in 0.199 seconds with exit status 0 (successful).
+ DEBUG [029d6cb3] Running [ -f /var/www/apps/mmp/current/REVISION ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [029d6cb3] Command: [ -f /var/www/apps/mmp/current/REVISION ]
+ DEBUG [cae3867e] Finished in 0.205 seconds with exit status 0 (successful).
+ DEBUG [44a29264] Running /usr/bin/env cat /var/www/apps/mmp/current/REVISION 2>/dev/null as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [44a29264] Command: /usr/bin/env cat /var/www/apps/mmp/current/REVISION 2>/dev/null
+ DEBUG [e9b29389] 	354f7a8f8a43c93a50fc59cd6427ccb7a6528565
+ DEBUG [e9b29389] Finished in 0.202 seconds with exit status 0 (successful).
+ DEBUG [7dfcca8d] Running [ -f /var/www/apps/mmp/repo/HEAD ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [7dfcca8d] Command: [ -f /var/www/apps/mmp/repo/HEAD ]
+ DEBUG [5ebe7495] Finished in 0.200 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/apps/mmp/repo
+ DEBUG [383f0b6a] Running if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [383f0b6a] Command: if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi
+ DEBUG [a8b6b34f] Finished in 0.203 seconds with exit status 0 (successful).
+  INFO [9bc1714d] Running /usr/bin/env git remote set-url origin git@github.com:tmckenzie/saleschart.git as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [9bc1714d] Command: cd /var/www/apps/mmp/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git remote set-url origin git@github.com:tmckenzie/saleschart.git )
+  INFO [6261e7c9] Finished in 0.211 seconds with exit status 0 (successful).
+  INFO [3c05042b] Running /usr/bin/env git remote update --prune as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [3c05042b] Command: cd /var/www/apps/mmp/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [010a492b] 	Fetching origin
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-02-15 09:57:06 -0700 cap production deploy:migrations
+  INFO ---------------------------------------------------------------------------
+ DEBUG [c3198a2f] Running /usr/bin/env which passenger as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c3198a2f] Command: /usr/bin/env which passenger
+ DEBUG [f879365a] 	/usr/bin/passenger
+ DEBUG [f879365a] Finished in 0.790 seconds with exit status 0 (successful).
+ DEBUG [1bd82462] Running /usr/local/rvm/bin/rvm version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [1bd82462] Command: /usr/local/rvm/bin/rvm version
+ DEBUG [cf7ee0ab] 	rvm 1.29.7 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [cf7ee0ab] Finished in 0.376 seconds with exit status 0 (successful).
+ DEBUG [1366a84e] Running /usr/local/rvm/bin/rvm current as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [1366a84e] Command: /usr/local/rvm/bin/rvm current
+ DEBUG [549aa012] 	ruby-2.2.5
+ DEBUG [549aa012] Finished in 0.388 seconds with exit status 0 (successful).
+ DEBUG [fc78958e] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [fc78958e] Command: /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version
+ DEBUG [f99a884d] 	ruby 2.2.5p319 (2016-04-26 revision 54774) [x86_64-linux]
+ DEBUG [f99a884d] Finished in 0.667 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-02-15 09:58:17 -0700 cap production deploy:migrate
+  INFO ---------------------------------------------------------------------------
+ DEBUG [ab1d56d7] Running /usr/bin/env which passenger as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [ab1d56d7] Command: /usr/bin/env which passenger
+ DEBUG [17cdaf17] 	/usr/bin/passenger
+ DEBUG [17cdaf17] Finished in 0.821 seconds with exit status 0 (successful).
+ DEBUG [39b0380c] Running /usr/local/rvm/bin/rvm version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [39b0380c] Command: /usr/local/rvm/bin/rvm version
+ DEBUG [a972b84e] 	rvm 1.29.7 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [a972b84e] Finished in 0.375 seconds with exit status 0 (successful).
+ DEBUG [421f2144] Running /usr/local/rvm/bin/rvm current as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [421f2144] Command: /usr/local/rvm/bin/rvm current
+ DEBUG [4fb71f28] 	ruby-2.2.5
+ DEBUG [4fb71f28] Finished in 0.371 seconds with exit status 0 (successful).
+ DEBUG [46b8f538] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [46b8f538] Command: /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version
+ DEBUG [b3b9833a] 	ruby 2.2.5p319 (2016-04-26 revision 54774) [x86_64-linux]
+ DEBUG [b3b9833a] Finished in 0.552 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [161a5e33] Running if test ! -d /var/www/apps/mmp/current; then echo "Directory does not exist '/var/www/apps/mmp/current'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [161a5e33] Command: if test ! -d /var/www/apps/mmp/current; then echo "Directory does not exist '/var/www/apps/mmp/current'" 1>&2; false; fi
+ DEBUG [085b843b] Finished in 0.199 seconds with exit status 0 (successful).
+  INFO [617caad1] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle exec rake db:migrate as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [617caad1] Command: cd /var/www/apps/mmp/current && ( export RAILS_ENV="production" ; /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle exec rake db:migrate )
+ DEBUG [67fceaf3] 	  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  INFO [67fceaf3] Finished in 4.411 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-02-15 09:58:41 -0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [0cacf8f2] Running /usr/bin/env which passenger as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [0cacf8f2] Command: /usr/bin/env which passenger
+ DEBUG [e50b814c] 	/usr/bin/passenger
+ DEBUG [e50b814c] Finished in 0.856 seconds with exit status 0 (successful).
+ DEBUG [c6c4261d] Running /usr/local/rvm/bin/rvm version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c6c4261d] Command: /usr/local/rvm/bin/rvm version
+ DEBUG [08ff7da0] 	rvm 1.29.7 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [08ff7da0] Finished in 0.374 seconds with exit status 0 (successful).
+ DEBUG [a925db8d] Running /usr/local/rvm/bin/rvm current as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [a925db8d] Command: /usr/local/rvm/bin/rvm current
+ DEBUG [547f76b8] 	ruby-2.2.5
+ DEBUG [547f76b8] Finished in 0.375 seconds with exit status 0 (successful).
+ DEBUG [a9e17460] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [a9e17460] Command: /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do ruby --version
+ DEBUG [8d47d645] 	ruby 2.2.5p319 (2016-04-26 revision 54774) [x86_64-linux]
+ DEBUG [8d47d645] Finished in 0.559 seconds with exit status 0 (successful).
+  INFO [e6f601eb] Running /usr/bin/env mkdir -p /tmp as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [e6f601eb] Command: /usr/bin/env mkdir -p /tmp
+  INFO [499f10c7] Finished in 0.205 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-mmp-production-timmckenzie.sh 0.0%
+  INFO Uploading /tmp/git-ssh-mmp-production-timmckenzie.sh 100.0%
+  INFO [39b54b0d] Running /usr/bin/env chmod 700 /tmp/git-ssh-mmp-production-timmckenzie.sh as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [39b54b0d] Command: /usr/bin/env chmod 700 /tmp/git-ssh-mmp-production-timmckenzie.sh
+  INFO [f747fd21] Finished in 0.211 seconds with exit status 0 (successful).
+  INFO [14c0d691] Running /usr/bin/env git ls-remote git@github.com:tmckenzie/saleschart.git HEAD as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [14c0d691] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git ls-remote git@github.com:tmckenzie/saleschart.git HEAD )
+ DEBUG [ca3d68e0] 	354f7a8f8a43c93a50fc59cd6427ccb7a6528565	HEAD
+  INFO [ca3d68e0] Finished in 2.670 seconds with exit status 0 (successful).
+  INFO [5dda3183] Running /usr/bin/env mkdir -p /var/www/apps/mmp/shared /var/www/apps/mmp/releases as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [5dda3183] Command: /usr/bin/env mkdir -p /var/www/apps/mmp/shared /var/www/apps/mmp/releases
+  INFO [3557ffee] Finished in 0.205 seconds with exit status 0 (successful).
+  INFO [b4160e1b] Running /usr/bin/env mkdir -p /var/www/apps/mmp/shared/log /var/www/apps/mmp/shared/tmp/pids /var/www/apps/mmp/shared/tmp/cache /var/www/apps/mmp/shared/tmp/sockets /var/www/apps/mmp/shared/vendor/bundle /var/www/apps/mmp/shared/public/system /var/www/apps/mmp/shared/public/uploads /var/www/apps/mmp/shared/public/assets as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [b4160e1b] Command: /usr/bin/env mkdir -p /var/www/apps/mmp/shared/log /var/www/apps/mmp/shared/tmp/pids /var/www/apps/mmp/shared/tmp/cache /var/www/apps/mmp/shared/tmp/sockets /var/www/apps/mmp/shared/vendor/bundle /var/www/apps/mmp/shared/public/system /var/www/apps/mmp/shared/public/uploads /var/www/apps/mmp/shared/public/assets
+  INFO [6f97129c] Finished in 0.200 seconds with exit status 0 (successful).
+ DEBUG [b5cc3abe] Running [ -f /var/www/apps/mmp/current/REVISION ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [b5cc3abe] Command: [ -f /var/www/apps/mmp/current/REVISION ]
+ DEBUG [74b38793] Finished in 0.198 seconds with exit status 0 (successful).
+ DEBUG [c36017b9] Running /usr/bin/env cat /var/www/apps/mmp/current/REVISION 2>/dev/null as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c36017b9] Command: /usr/bin/env cat /var/www/apps/mmp/current/REVISION 2>/dev/null
+ DEBUG [4f839f70] 	354f7a8f8a43c93a50fc59cd6427ccb7a6528565
+ DEBUG [4f839f70] Finished in 0.206 seconds with exit status 0 (successful).
+ DEBUG [8e1e3deb] Running [ -f /var/www/apps/mmp/repo/HEAD ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [8e1e3deb] Command: [ -f /var/www/apps/mmp/repo/HEAD ]
+ DEBUG [d6b99b7d] Finished in 0.200 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/apps/mmp/repo
+ DEBUG [c25426e6] Running if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c25426e6] Command: if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi
+ DEBUG [d1fe5401] Finished in 0.204 seconds with exit status 0 (successful).
+  INFO [eaef90bb] Running /usr/bin/env git remote set-url origin git@github.com:tmckenzie/saleschart.git as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [eaef90bb] Command: cd /var/www/apps/mmp/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git remote set-url origin git@github.com:tmckenzie/saleschart.git )
+  INFO [872114f1] Finished in 0.204 seconds with exit status 0 (successful).
+  INFO [46b9c054] Running /usr/bin/env git remote update --prune as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [46b9c054] Command: cd /var/www/apps/mmp/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [cf152238] 	Fetching origin
+  INFO [cf152238] Finished in 1.131 seconds with exit status 0 (successful).
+ DEBUG [1b6c60b1] Running if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [1b6c60b1] Command: if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi
+ DEBUG [75df9f31] Finished in 0.203 seconds with exit status 0 (successful).
+  INFO [eb9368d3] Running /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847 as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [eb9368d3] Command: cd /var/www/apps/mmp/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847 )
+  INFO [ec79677f] Finished in 0.206 seconds with exit status 0 (successful).
+  INFO [d7f7f8a5] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/apps/mmp/releases/20190215165847 as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [d7f7f8a5] Command: cd /var/www/apps/mmp/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/apps/mmp/releases/20190215165847 )
+  INFO [9c27a6bc] Finished in 0.329 seconds with exit status 0 (successful).
+ DEBUG [d01f5643] Running if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [d01f5643] Command: if test ! -d /var/www/apps/mmp/repo; then echo "Directory does not exist '/var/www/apps/mmp/repo'" 1>&2; false; fi
+ DEBUG [56da891b] Finished in 0.205 seconds with exit status 0 (successful).
+ DEBUG [bb507de2] Running /usr/bin/env git rev-list --max-count=1 master as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [bb507de2] Command: cd /var/www/apps/mmp/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-mmp-production-timmckenzie.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [bc97d884] 	354f7a8f8a43c93a50fc59cd6427ccb7a6528565
+ DEBUG [bc97d884] Finished in 0.207 seconds with exit status 0 (successful).
+ DEBUG [bafdc2b5] Running if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [bafdc2b5] Command: if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi
+ DEBUG [4c69d841] Finished in 0.200 seconds with exit status 0 (successful).
+  INFO [8f2323ad] Running /usr/bin/env echo "354f7a8f8a43c93a50fc59cd6427ccb7a6528565" > REVISION as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [8f2323ad] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/bin/env echo "354f7a8f8a43c93a50fc59cd6427ccb7a6528565" > REVISION
+  INFO [6a567686] Finished in 0.204 seconds with exit status 0 (successful).
+  INFO [ded4bf05] Running /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847/config as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [ded4bf05] Command: /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847/config
+  INFO [6c644bd8] Finished in 0.202 seconds with exit status 0 (successful).
+ DEBUG [1eecfdd2] Running [ -L /var/www/apps/mmp/releases/20190215165847/config/application.yml ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [1eecfdd2] Command: [ -L /var/www/apps/mmp/releases/20190215165847/config/application.yml ]
+ DEBUG [7b992fe8] Finished in 0.202 seconds with exit status 1 (failed).
+ DEBUG [6eea9822] Running [ -f /var/www/apps/mmp/releases/20190215165847/config/application.yml ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [6eea9822] Command: [ -f /var/www/apps/mmp/releases/20190215165847/config/application.yml ]
+ DEBUG [e22308f1] Finished in 0.204 seconds with exit status 0 (successful).
+  INFO [b6c38a78] Running /usr/bin/env rm /var/www/apps/mmp/releases/20190215165847/config/application.yml as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [b6c38a78] Command: /usr/bin/env rm /var/www/apps/mmp/releases/20190215165847/config/application.yml
+  INFO [d3a5668d] Finished in 0.205 seconds with exit status 0 (successful).
+  INFO [25fc840d] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/config/application.yml /var/www/apps/mmp/releases/20190215165847/config/application.yml as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [25fc840d] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/config/application.yml /var/www/apps/mmp/releases/20190215165847/config/application.yml
+  INFO [aef5f7c0] Finished in 0.201 seconds with exit status 0 (successful).
+  INFO [4845d3e7] Running /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847 /var/www/apps/mmp/releases/20190215165847/tmp /var/www/apps/mmp/releases/20190215165847/vendor /var/www/apps/mmp/releases/20190215165847/public as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [4845d3e7] Command: /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847 /var/www/apps/mmp/releases/20190215165847/tmp /var/www/apps/mmp/releases/20190215165847/vendor /var/www/apps/mmp/releases/20190215165847/public
+  INFO [4fc4876a] Finished in 0.204 seconds with exit status 0 (successful).
+ DEBUG [99aea7a9] Running [ -L /var/www/apps/mmp/releases/20190215165847/log ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [99aea7a9] Command: [ -L /var/www/apps/mmp/releases/20190215165847/log ]
+ DEBUG [32d28cf0] Finished in 0.205 seconds with exit status 1 (failed).
+ DEBUG [e0666828] Running [ -d /var/www/apps/mmp/releases/20190215165847/log ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [e0666828] Command: [ -d /var/www/apps/mmp/releases/20190215165847/log ]
+ DEBUG [d92f2091] Finished in 0.202 seconds with exit status 0 (successful).
+  INFO [5469cac1] Running /usr/bin/env rm -rf /var/www/apps/mmp/releases/20190215165847/log as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [5469cac1] Command: /usr/bin/env rm -rf /var/www/apps/mmp/releases/20190215165847/log
+  INFO [58ed8fe0] Finished in 0.215 seconds with exit status 0 (successful).
+  INFO [d03c47e0] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/log /var/www/apps/mmp/releases/20190215165847/log as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [d03c47e0] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/log /var/www/apps/mmp/releases/20190215165847/log
+  INFO [c59cfce1] Finished in 0.205 seconds with exit status 0 (successful).
+ DEBUG [6d12bf33] Running [ -L /var/www/apps/mmp/releases/20190215165847/tmp/pids ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [6d12bf33] Command: [ -L /var/www/apps/mmp/releases/20190215165847/tmp/pids ]
+ DEBUG [b52609ce] Finished in 0.200 seconds with exit status 1 (failed).
+ DEBUG [9116f6d8] Running [ -d /var/www/apps/mmp/releases/20190215165847/tmp/pids ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [9116f6d8] Command: [ -d /var/www/apps/mmp/releases/20190215165847/tmp/pids ]
+ DEBUG [15981681] Finished in 0.202 seconds with exit status 1 (failed).
+  INFO [3f02ae96] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/tmp/pids /var/www/apps/mmp/releases/20190215165847/tmp/pids as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [3f02ae96] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/tmp/pids /var/www/apps/mmp/releases/20190215165847/tmp/pids
+  INFO [00e32ed3] Finished in 0.205 seconds with exit status 0 (successful).
+ DEBUG [8f40a1df] Running [ -L /var/www/apps/mmp/releases/20190215165847/tmp/cache ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [8f40a1df] Command: [ -L /var/www/apps/mmp/releases/20190215165847/tmp/cache ]
+ DEBUG [d15f9048] Finished in 0.197 seconds with exit status 1 (failed).
+ DEBUG [c55bfede] Running [ -d /var/www/apps/mmp/releases/20190215165847/tmp/cache ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c55bfede] Command: [ -d /var/www/apps/mmp/releases/20190215165847/tmp/cache ]
+ DEBUG [c0efb750] Finished in 0.199 seconds with exit status 0 (successful).
+  INFO [38b99d30] Running /usr/bin/env rm -rf /var/www/apps/mmp/releases/20190215165847/tmp/cache as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [38b99d30] Command: /usr/bin/env rm -rf /var/www/apps/mmp/releases/20190215165847/tmp/cache
+  INFO [91b289f8] Finished in 0.206 seconds with exit status 0 (successful).
+  INFO [ce1c217e] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/tmp/cache /var/www/apps/mmp/releases/20190215165847/tmp/cache as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [ce1c217e] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/tmp/cache /var/www/apps/mmp/releases/20190215165847/tmp/cache
+  INFO [5274e48c] Finished in 0.202 seconds with exit status 0 (successful).
+ DEBUG [ab43e6b1] Running [ -L /var/www/apps/mmp/releases/20190215165847/tmp/sockets ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [ab43e6b1] Command: [ -L /var/www/apps/mmp/releases/20190215165847/tmp/sockets ]
+ DEBUG [f6b8128b] Finished in 0.197 seconds with exit status 1 (failed).
+ DEBUG [f5450717] Running [ -d /var/www/apps/mmp/releases/20190215165847/tmp/sockets ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [f5450717] Command: [ -d /var/www/apps/mmp/releases/20190215165847/tmp/sockets ]
+ DEBUG [d0d27461] Finished in 0.206 seconds with exit status 1 (failed).
+  INFO [6ab543ab] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/tmp/sockets /var/www/apps/mmp/releases/20190215165847/tmp/sockets as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [6ab543ab] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/tmp/sockets /var/www/apps/mmp/releases/20190215165847/tmp/sockets
+  INFO [4896a661] Finished in 0.206 seconds with exit status 0 (successful).
+ DEBUG [2bf07196] Running [ -L /var/www/apps/mmp/releases/20190215165847/vendor/bundle ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [2bf07196] Command: [ -L /var/www/apps/mmp/releases/20190215165847/vendor/bundle ]
+ DEBUG [5b8bb42d] Finished in 0.201 seconds with exit status 1 (failed).
+ DEBUG [ef1b5639] Running [ -d /var/www/apps/mmp/releases/20190215165847/vendor/bundle ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [ef1b5639] Command: [ -d /var/www/apps/mmp/releases/20190215165847/vendor/bundle ]
+ DEBUG [8c0e80d2] Finished in 0.202 seconds with exit status 1 (failed).
+  INFO [437515ba] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/vendor/bundle /var/www/apps/mmp/releases/20190215165847/vendor/bundle as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [437515ba] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/vendor/bundle /var/www/apps/mmp/releases/20190215165847/vendor/bundle
+  INFO [85ffa32c] Finished in 0.204 seconds with exit status 0 (successful).
+ DEBUG [effd65f4] Running [ -L /var/www/apps/mmp/releases/20190215165847/public/system ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [effd65f4] Command: [ -L /var/www/apps/mmp/releases/20190215165847/public/system ]
+ DEBUG [2aa30463] Finished in 0.203 seconds with exit status 1 (failed).
+ DEBUG [a4ffe20a] Running [ -d /var/www/apps/mmp/releases/20190215165847/public/system ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [a4ffe20a] Command: [ -d /var/www/apps/mmp/releases/20190215165847/public/system ]
+ DEBUG [d5eeb9c7] Finished in 0.201 seconds with exit status 1 (failed).
+  INFO [6ca497c6] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/public/system /var/www/apps/mmp/releases/20190215165847/public/system as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [6ca497c6] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/public/system /var/www/apps/mmp/releases/20190215165847/public/system
+  INFO [11535cc7] Finished in 0.205 seconds with exit status 0 (successful).
+ DEBUG [05806397] Running [ -L /var/www/apps/mmp/releases/20190215165847/public/uploads ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [05806397] Command: [ -L /var/www/apps/mmp/releases/20190215165847/public/uploads ]
+ DEBUG [05937afd] Finished in 0.207 seconds with exit status 1 (failed).
+ DEBUG [6e1d0454] Running [ -d /var/www/apps/mmp/releases/20190215165847/public/uploads ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [6e1d0454] Command: [ -d /var/www/apps/mmp/releases/20190215165847/public/uploads ]
+ DEBUG [b8f54c5a] Finished in 0.203 seconds with exit status 1 (failed).
+  INFO [4df49ad7] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/public/uploads /var/www/apps/mmp/releases/20190215165847/public/uploads as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [4df49ad7] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/public/uploads /var/www/apps/mmp/releases/20190215165847/public/uploads
+  INFO [648c4340] Finished in 0.201 seconds with exit status 0 (successful).
+ DEBUG [9a37ae3e] Running [ -L /var/www/apps/mmp/releases/20190215165847/public/assets ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [9a37ae3e] Command: [ -L /var/www/apps/mmp/releases/20190215165847/public/assets ]
+ DEBUG [2ac7edb0] Finished in 0.203 seconds with exit status 1 (failed).
+ DEBUG [11290c3f] Running [ -d /var/www/apps/mmp/releases/20190215165847/public/assets ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [11290c3f] Command: [ -d /var/www/apps/mmp/releases/20190215165847/public/assets ]
+ DEBUG [8e5380a3] Finished in 0.199 seconds with exit status 1 (failed).
+  INFO [fe646b24] Running /usr/bin/env ln -s /var/www/apps/mmp/shared/public/assets /var/www/apps/mmp/releases/20190215165847/public/assets as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [fe646b24] Command: /usr/bin/env ln -s /var/www/apps/mmp/shared/public/assets /var/www/apps/mmp/releases/20190215165847/public/assets
+  INFO [4997ae08] Finished in 0.200 seconds with exit status 0 (successful).
+ DEBUG [e7d8ba60] Running if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [e7d8ba60] Command: if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi
+ DEBUG [3df8a281] Finished in 0.202 seconds with exit status 0 (successful).
+ DEBUG [ce87b412] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle check --path /var/www/apps/mmp/shared/bundle as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [ce87b412] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle check --path /var/www/apps/mmp/shared/bundle
+ DEBUG [3321d812] 	The following gems are missing
+ DEBUG [3321d812] 	 * public_suffix (3.0.3)
+ DEBUG [3321d812] 	 * addressable (2.6.0)
+ DEBUG [3321d812] 	 * sshkit (1.18.2)
+ DEBUG [3321d812] 	 * coderay (1.1.2)
+ DEBUG [3321d812] 	 * erubi (1.8.0)
+ DEBUG [3321d812] 	 * better_errors (2.5.0)
+ DEBUG [3321d812] 	 * debug_inspector (0.0.3)
+ DEBUG [3321d812] 	 * binding_of_caller (0.8.0)
+ DEBUG [3321d812] 	 * byebug (10.0.2)
+ DEBUG [3321d812] 	 * capistrano-rails-collection (0.1.0)
+ DEBUG [3321d812] 	 * xpath (3.1.0)
+ DEBUG [3321d812] 	 * capybara (3.1.1)
+ DEBUG [3321d812] 	 * childprocess (0.9.0)
+ DEBUG [3321d812] 	 * database_cleaner (1.7.0)
+ DEBUG [3321d812] 	 * diff-lcs (1.3)
+ DEBUG [3321d812] 	 * factory_bot (4.10.0)
+ DEBUG [3321d812] 	 * faker (1.9.1)
+ DEBUG [3321d812] 	 * launchy (2.4.3)
+ DEBUG [3321d812] 	 * quiet_assets (1.1.0)
+ DEBUG [3321d812] 	 * rails_layout (1.0.42)
+ DEBUG [3321d812] 	 * rspec-support (3.8.0)
+ DEBUG [3321d812] 	 * rspec-core (3.8.0)
+ DEBUG [3321d812] 	 * rspec-expectations (3.8.2)
+ DEBUG [3321d812] 	 * rspec-mocks (3.8.0)
+ DEBUG [3321d812] 	 * rspec-rails (3.8.2)
+ DEBUG [3321d812] 	 * rubyzip (1.2.2)
+ DEBUG [3321d812] 	 * rvm-capistrano (1.5.0)
+ DEBUG [3321d812] 	 * selenium-webdriver (3.141.0)
+ DEBUG [3321d812] 	 * spring (2.0.2)
+ DEBUG [3321d812] 	 * spring-commands-rspec (1.0.4)
+ DEBUG [3321d812] 	 * web-console (2.3.0)
+ DEBUG [3321d812] 	Install missing gems with `bundle install`
+ DEBUG [3321d812] Finished in 1.036 seconds with exit status 1 (failed).
+  INFO [f57d7d8b] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle install --path /var/www/apps/mmp/shared/bundle --jobs 4 --without development test --deployment --quiet as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [f57d7d8b] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle install --path /var/www/apps/mmp/shared/bundle --jobs 4 --without development test --deployment --quiet
+  INFO [c6940ed1] Finished in 1.637 seconds with exit status 0 (successful).
+ DEBUG [f2e6a842] Running if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [f2e6a842] Command: if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi
+ DEBUG [cbdd37f7] Finished in 0.204 seconds with exit status 0 (successful).
+  INFO [f05ccb89] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle exec rake assets:precompile as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [f05ccb89] Command: cd /var/www/apps/mmp/releases/20190215165847 && ( export RAILS_ENV="production" RAILS_GROUPS="" ; /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle exec rake assets:precompile )
+  INFO [b133c387] Finished in 2.968 seconds with exit status 0 (successful).
+ DEBUG [4710a415] Running if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [4710a415] Command: if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi
+ DEBUG [7b2fc558] Finished in 0.198 seconds with exit status 0 (successful).
+  INFO [f6960c49] Running /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847/assets_manifest_backup as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [f6960c49] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847/assets_manifest_backup
+  INFO [f251902e] Finished in 0.199 seconds with exit status 0 (successful).
+ DEBUG [1ce7616c] Running /usr/bin/env ls /var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest* as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [1ce7616c] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/bin/env ls /var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest*
+ DEBUG [bd37c0fc] 	/var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest-26ff8f59c50f40d29e2d100a2080d9cc.json
+ DEBUG [bd37c0fc] Finished in 0.205 seconds with exit status 0 (successful).
+ DEBUG [f99c3bec] Running /usr/bin/env ls /var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest* as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [f99c3bec] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/bin/env ls /var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest*
+ DEBUG [f32040b7] 	/var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest-26ff8f59c50f40d29e2d100a2080d9cc.json
+ DEBUG [f32040b7] Finished in 0.212 seconds with exit status 0 (successful).
+  INFO [9ad4cd63] Running /usr/bin/env cp /var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest-26ff8f59c50f40d29e2d100a2080d9cc.json /var/www/apps/mmp/releases/20190215165847/assets_manifest_backup as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [9ad4cd63] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/bin/env cp /var/www/apps/mmp/releases/20190215165847/public/assets/.sprockets-manifest-26ff8f59c50f40d29e2d100a2080d9cc.json /var/www/apps/mmp/releases/20190215165847/assets_manifest_backup
+  INFO [379dbfa0] Finished in 0.212 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [c667dafe] Running if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c667dafe] Command: if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi
+ DEBUG [e83b7979] Finished in 0.203 seconds with exit status 0 (successful).
+  INFO [e20f60ea] Running /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle exec rake db:migrate as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [e20f60ea] Command: cd /var/www/apps/mmp/releases/20190215165847 && ( export RAILS_ENV="production" ; /usr/local/rvm/bin/rvm ruby-2.2.5@mmp do bundle exec rake db:migrate )
+ DEBUG [eb261246] 	  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  INFO [eb261246] Finished in 2.657 seconds with exit status 0 (successful).
+  INFO [c84ee212] Running /usr/bin/env ln -s /var/www/apps/mmp/releases/20190215165847 /var/www/apps/mmp/releases/current as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c84ee212] Command: /usr/bin/env ln -s /var/www/apps/mmp/releases/20190215165847 /var/www/apps/mmp/releases/current
+  INFO [b66f9982] Finished in 0.201 seconds with exit status 0 (successful).
+  INFO [2467b88f] Running /usr/bin/env mv /var/www/apps/mmp/releases/current /var/www/apps/mmp as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [2467b88f] Command: /usr/bin/env mv /var/www/apps/mmp/releases/current /var/www/apps/mmp
+  INFO [6d1ae1ec] Finished in 0.200 seconds with exit status 0 (successful).
+ DEBUG [e21802b7] Running if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [e21802b7] Command: if test ! -d /var/www/apps/mmp/releases/20190215165847; then echo "Directory does not exist '/var/www/apps/mmp/releases/20190215165847'" 1>&2; false; fi
+ DEBUG [a5ba4c46] Finished in 0.203 seconds with exit status 0 (successful).
+  INFO [47887c13] Running /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847/tmp as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [47887c13] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/bin/env mkdir -p /var/www/apps/mmp/releases/20190215165847/tmp
+  INFO [a8ca7dc4] Finished in 0.205 seconds with exit status 0 (successful).
+  INFO [63697e42] Running /usr/bin/env touch /var/www/apps/mmp/releases/20190215165847/tmp/restart.txt as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [63697e42] Command: cd /var/www/apps/mmp/releases/20190215165847 && /usr/bin/env touch /var/www/apps/mmp/releases/20190215165847/tmp/restart.txt
+  INFO [b39caa60] Finished in 0.212 seconds with exit status 0 (successful).
+ DEBUG [2663920a] Running /usr/bin/env ls -x /var/www/apps/mmp/releases as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [2663920a] Command: /usr/bin/env ls -x /var/www/apps/mmp/releases
+ DEBUG [069973b6] 	20190207064154	20190207065343	20190207180443	20190207184027	20190207230008
+20190215165847
+ DEBUG [069973b6] Finished in 0.201 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 6 deployed releases on ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [3318eef3] Running [ -d /var/www/apps/mmp/current ] as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [3318eef3] Command: [ -d /var/www/apps/mmp/current ]
+ DEBUG [9dd38e45] Finished in 0.196 seconds with exit status 0 (successful).
+ DEBUG [c45cee98] Running /usr/bin/env readlink /var/www/apps/mmp/current as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [c45cee98] Command: /usr/bin/env readlink /var/www/apps/mmp/current
+ DEBUG [b4c2da00] 	/var/www/apps/mmp/releases/20190215165847
+ DEBUG [b4c2da00] Finished in 0.203 seconds with exit status 0 (successful).
+  INFO [d091cacf] Running /usr/bin/env rm -rf /var/www/apps/mmp/releases/20190207064154 as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [d091cacf] Command: /usr/bin/env rm -rf /var/www/apps/mmp/releases/20190207064154
+  INFO [56634ee2] Finished in 0.235 seconds with exit status 0 (successful).
+ DEBUG [ca330595] Running if test ! -d /var/www/apps/mmp/releases; then echo "Directory does not exist '/var/www/apps/mmp/releases'" 1>&2; false; fi as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [ca330595] Command: if test ! -d /var/www/apps/mmp/releases; then echo "Directory does not exist '/var/www/apps/mmp/releases'" 1>&2; false; fi
+ DEBUG [b0d169ef] Finished in 0.204 seconds with exit status 0 (successful).
+  INFO [1d9686c5] Running /usr/bin/env echo "Branch master (at 354f7a8f8a43c93a50fc59cd6427ccb7a6528565) deployed as release 20190215165847 by timmckenzie" >> /var/www/apps/mmp/revisions.log as deploy_user@ec2-18-218-181-87.us-east-2.compute.amazonaws.com
+ DEBUG [1d9686c5] Command: cd /var/www/apps/mmp/releases && /usr/bin/env echo "Branch master (at 354f7a8f8a43c93a50fc59cd6427ccb7a6528565) deployed as release 20190215165847 by timmckenzie" >> /var/www/apps/mmp/revisions.log
+  INFO [f56e5baa] Finished in 0.202 seconds with exit status 0 (successful).

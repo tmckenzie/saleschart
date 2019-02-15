@@ -36,7 +36,7 @@ class Admin::WorkbenchsController < Admin::BaseController
 
   def sessions
     @api_sessions = UserSession.order('expire_at desc').paginate page: params[:page], per_page: 30
-    @web_sessions = UserActivityLog.select("DISTINCT user_id").where("created_at > ? and rpt_month = ?", 200.minutes.ago, Time.now.utc.to_s(:month_partition).to_i).order("created_at desc").paginate page: params[:page], per_page: 30
+    @web_sessions = []
 
   end
 

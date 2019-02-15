@@ -1,0 +1,120 @@
+
+@import 'bootstrap';
+@import 'mixins/colors';
+
+// Applies to all screens unless overwritten by the media query on a
+// per property basis.
+body {
+  padding: 0;
+  background-color: $lighter_grey;
+}
+
+h1.super-large {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-size: 63px;
+  color: $white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.mc-text-inverse {
+  font-weight: bold;
+  color: $white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.mc-text-large {
+  font-size: 25px;
+  line-height: 25px;
+}
+
+.mc-text-medium {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.mc-text-center {
+  text-align: center;
+}
+
+.container-fluid {
+  min-height: 450px;
+
+  &.no-margin {
+    margin-top: -20px;
+  }
+}
+
+.mc-modal-container {
+  position: relative;
+}
+
+.mc-logo-below-modal-container {
+  position: fixed;
+  top: 77%;
+  left: 50%;
+  margin-left: -140px;
+  width: 280px;
+}
+
+.square-corners {
+  border-radius: 0;
+}
+
+.fixed_height {
+  height: 89px;
+}
+
+.sign-up-start-button {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 30px;
+  height: 50px;
+}
+
+input.tall-controls {
+  height: 50px;
+  font-size: 30px;
+}
+
+.mc-nav-item {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+// Large desktop
+@media (min-width: 1200px) {
+  .container-fluid {
+    padding-top: 100px;
+  }
+}
+
+// Portrait tablet to landscape and desktop
+@media (min-width: 768px) and (max-width: 979px) {
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+// Landscape phone to portrait tablet
+@media (max-width: 767px) {
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+// Landscape phones and down
+@media (max-width: 480px) {
+  h1.super-large {
+    font-size: 50px;
+    padding-bottom: 25px;
+  }
+
+  .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

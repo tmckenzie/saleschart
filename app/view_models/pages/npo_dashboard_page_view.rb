@@ -29,6 +29,8 @@ module Pages
     end
 
     def total_collected_amount_for_previous_month
+      p "here in totals"
+      p "*********"
       ReportCalculation.total_collected_amount(npo, 1.month.ago.utc.beginning_of_month, 1.month.ago.utc.end_of_month)
     end
 
