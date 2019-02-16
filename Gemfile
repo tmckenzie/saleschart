@@ -26,6 +26,7 @@ gem 'jquery-rails', '~> 3.1.4'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'momentjs-rails', '~> 2.15', '>= 2.15.1'
 gem 'raphael-rails', '~> 2.1.2'
+gem 'active_hash', '2.0.0'
 
 group :development, :test do
   gem 'byebug'

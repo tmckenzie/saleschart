@@ -18,6 +18,7 @@ module RailsBootstrap
     config.autoload_paths += Dir["#{config.root}/app/models/filters/**/"]
     config.autoload_paths += Dir["#{config.root}/app/exhibits/"]
     config.autoload_paths += Dir["#{config.root}/lib/one_time/"]
+    config.autoload_paths += Dir["#{config.root}/lib/extension/"]
     config.autoload_paths += Dir["#{config.root}/app/components/"]
     config.autoload_paths += Dir["#{config.root}/app/pages/**"]
     config.autoload_paths += Dir["#{config.root}/app/models/concerns/"]

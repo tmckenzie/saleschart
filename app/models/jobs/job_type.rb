@@ -1,12 +1,8 @@
 class Jobs::JobType < ActiveHash::Base
   self.data = [
-      {id: 1, name: 'ValidateAddress', :class_name => Jobs::ValidateAddressJob.name},
-      {id: 2, name: 'SalesForceImport', :class_name => Jobs::SalesforceImportJob.name},
-      {id: 3, name: 'UpdateSettlement', :class_name => Jobs::UpdateSettlementJob.name},
-      {id: 4, name: 'MessagesReport', :class_name => Jobs::MessagesReportJob.name},
-      {id: 5, name: 'KeywordReset', :class_name => Jobs::KeywordResetJob.name}
+      {id: 1, name: 'SalesData', :class_name => Jobs::SalesDataJob.name},
   ]
-  make_statusable
+  # make_statusable
 
   class << self
 
