@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :authenticate_user!
   include Mixins::Navigation
+  
+  layout :determine_layout
 
   helper_method :current_npo, :mcadmin_manage_links, :protocol,  :mc_admin?
 
@@ -46,6 +48,11 @@ class ApplicationController < ActionController::Base
       reset_session
       # redirect_to '/users/sign_in'
     end
+  end
+
+  #private
+  def determine_layout
+    'application'
   end
 
   def load_nav_links
