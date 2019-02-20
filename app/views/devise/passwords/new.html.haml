@@ -1,0 +1,16 @@
+.row.margin-top--lv4
+  .col-md-4.col-md-offset-4
+    %h1 Reset Your Password
+.row.margin-top--lv2
+  .col-md-4.col-md-offset-4
+    = form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post }  do |f|
+      - if params['referrer'].present?
+        = hidden_field_tag 'referrer', params['referrer']
+      .form-group
+        = f.label :email do
+          %strong Email
+        = f.email_field :email, placeholder: 'Email', class: 'form-control input-lg'
+      = f.submit 'Send', class: 'btn btn-info btn-block btn-lg'
+    -#.row
+    -#  .col-xs-6
+    -#    %p= render partial: 'devise/shared/links'

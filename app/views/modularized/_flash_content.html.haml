@@ -1,0 +1,14 @@
+-#-if alert
+-#  .row.margin-top--lv2
+-#    .col-md-10.col-md-offset-1
+-#      %div{data: {'content-key' => 'flash-content'}}
+-#        .alert.alert-danger
+-#          %button.close{ type: 'button', data: { dismiss: 'alert' } } &times;
+-#          %strong= alert
+-#- elsif notice
+-#  .row.margin-top--lv2
+-#    .col-md-10.col-md-offset-1
+-#      %div{data: {'content-key' => 'flash-content'}}
+-#        .alert.alert-warning
+-#          %button.close{ type: 'button', data: { dismiss: 'alert' } } &times;
+-#          %strong= notice

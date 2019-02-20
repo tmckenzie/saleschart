@@ -1,0 +1,29 @@
+.row.margin-top--lv4
+  .col-md-4.col-md-offset-4
+    %h1 Log In
+
+.row.margin-top--lv2
+  .col-md-4.col-md-offset-4
+    = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      = render partial: 'modularized/flash_content'
+      .form-group
+        = f.label :login do
+          %strong Email/Username
+        %div#login_group{ class: params['login'].present? ? 'input-group' : ''}
+          = f.text_field :login, placeholder: 'Email/Username', value: params['login'], class: 'form-control input-lg', autofocus: !params['login'].present?, readonly: params['login'].present?
+          - if params['login'].present?
+            %span.input-group-addon.btn#clear_login
+              %i.fa.fa-times.fa-lg
+      .form-group
+        = f.label :password
+        = f.password_field :password, placeholder: 'Password', class: 'form-control input-lg', autofocus: params['login'].present?
+      = f.submit 'Log In', class: 'btn btn-info btn-block btn-lg'
+      .form-group
+        .checkbox
+          = f.label :remember_me do
+            = f.check_box :remember_me
+            %strong Remember Me
+        - if devise_mapping.recoverable? && controller_name != 'passwords'
+          = link_to 'Forgot your password?', new_password_path(resource_name, referrer: params['referrer'])
+
+
