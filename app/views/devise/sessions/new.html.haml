@@ -7,16 +7,16 @@
     = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
       = render partial: 'modularized/flash_content'
       .form-group
-        = f.label :login do
+        = f.label :email do
           %strong Email/Username
-        %div#login_group{ class: params['login'].present? ? 'input-group' : ''}
-          = f.text_field :login, placeholder: 'Email/Username', value: params['login'], class: 'form-control input-lg', autofocus: !params['login'].present?, readonly: params['login'].present?
-          - if params['login'].present?
-            %span.input-group-addon.btn#clear_login
+        %div#email_group{ class: params['email'].present? ? 'input-group' : ''}
+          = f.text_field :email, placeholder: 'Email/Username', value: params['email'], class: 'form-control input-lg', autofocus: !params['email'].present?, readonly: params['email'].present?
+          - if params['email'].present?
+            %span.input-group-addon.btn#clear_email
               %i.fa.fa-times.fa-lg
       .form-group
         = f.label :password
-        = f.password_field :password, placeholder: 'Password', class: 'form-control input-lg', autofocus: params['login'].present?
+        = f.password_field :password, placeholder: 'Password', class: 'form-control input-lg', autofocus: params['email'].present?
       = f.submit 'Log In', class: 'btn btn-info btn-block btn-lg'
       .form-group
         .checkbox
