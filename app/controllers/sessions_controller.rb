@@ -1,7 +1,6 @@
 class SessionsController < Devise::SessionsController
   skip_before_filter :set_timezone
   skip_before_filter :authenticate_user!, only: [:new, :destroy]
-  skip_before_action :verify_authenticity_token
 
   def destroy
     if current_user
