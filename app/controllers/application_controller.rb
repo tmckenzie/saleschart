@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :authenticate_user!
   include Mixins::Navigation
-  
+
   layout :determine_layout
 
   helper_method :current_npo, :mcadmin_manage_links, :protocol,  :mc_admin?
@@ -35,11 +35,14 @@ class ApplicationController < ActionController::Base
       p current_user
       p "user"
       if current_user
-
+        p " currentuser"
+         p current_user
       else
+        p "clear"
         clear_sso_session_info
       end
     rescue => e
+      p "excepction"
       p e
       raise Exception
       # Most likely current_user blew up. Clear session!
