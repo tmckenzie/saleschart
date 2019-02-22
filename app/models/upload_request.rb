@@ -1,14 +1,14 @@
 class UploadRequest < ActiveRecord::Base
 
-  SPHERE_DATA = 'Sphere Data'
-  CONSTITUENT_DATA = 'upload'
+  INVENTORY_DATA = 'Inventory Data'
+  SALES_DATA = 'Sales Data'
   PAGE_CSS_DATA = 'page_css'
   OFFLINE_DONATION_DATA = 'offline_donation'
 
   REQUEST_TYPES =
       [
-          SPHERE_DATA,
-          CONSTITUENT_DATA
+          INVENTORY_DATA,
+          SALES_DATA
       ]
 
   MIN_TIME_TO_AUTO_DESTROY = 15 # seconds

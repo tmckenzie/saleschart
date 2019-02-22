@@ -38,13 +38,16 @@ Rails.application.routes.draw do
 
   end
 
+  resources :inventories , :only => [:index,  :show] do
+
+  end
   resource :vendor, :only => [] do
 
 
     resources :sales, :only => [:index, :new, :create, :show, :edit, :update] do
 
     end
-    resources :inventory
+    resources :inventories
     resources :users
   end
 end

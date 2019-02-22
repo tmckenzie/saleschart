@@ -54,8 +54,10 @@ module Dashboards
           partial: "dashboard/summary_panel",
           rows: {
               row_1: {partial: "dashboard/summary_panel_header", locals: {name: "Inventory"}},
-              row_2: {partial: "dashboard/summary_list", locals: {rows: collect_messaging_rows}}
-          }
+              row_2: {partial: "dashboard/summary_list", locals: {rows: collect_inventory_rows(model.vendor)}},
+              row_3: {partial: "dashboard/vendor/inventory_links", locals: {vendor: model.vendor}}
+
+      }
       }
     end
 
@@ -92,6 +94,14 @@ module Dashboards
 
     def total_offline_amount_for_year_to_date
       context.number_to_currency(model.total_offline_amount_for_year_to_date, precision: 0)
+    end
+
+    def total_in_stock
+      1
+    end
+
+    def total_out_of_stock
+      10
     end
 
     def total_collected_amount
@@ -136,10 +146,11 @@ module Dashboards
       ]
     end
 
-    def collect_messaging_rows
+    def collect_inventory_rows(vendor)
+      return [] if !vendor.has_inventory_charts_feature?
       [
-          ["Products Sold (#{current_month})", "N/A"],
-          ['Product Sold (All Time)', "N/A"]
+          ["Products In Stock ",  deferred_call_for('total_in_stock')],
+          ['Product out of Stock', deferred_call_for('total_out_of_stock')]
       #["Messages Sent (#{current_month})", deferred_call_for(:total_messages_sent_this_month)],
       #['Messages Sent (All Time)', deferred_call_for(:total_messages_sent)]
       ]

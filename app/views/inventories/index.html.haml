@@ -1,0 +1,7 @@
+.row#main.margin-top--lv2
+  .col-md-10.col-md-offset-1
+    .h4
+      Out of Stock
+.row
+  .col-md-10.col-md-offset-1
+    = render partial: 'inventory_rows', locals: {rows: @out_of_stock}

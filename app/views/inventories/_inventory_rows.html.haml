@@ -1,0 +1,29 @@
+.row
+  .col-xs-12{ align: "center" }
+    = will_paginate rows, renderer: BootstrapPagination::Rails
+  .col-xs-12
+    %table.table.table-striped.table-hover.table-condensed.mc-table
+      %thead
+        %tr
+          %th Product Asin
+          %th Product Description
+          %th Instock Quantity
+          -#%th= "Collected In #{exhibitor.previous_month}"
+          -#%th= "Collected In #{exhibitor.current_month}"
+          -#%th= 'Collected YTD'
+          -#%th= "Messages Sent In #{exhibitor.current_month}"
+          %th.text-center.btn-group-width Actions
+
+      %tbody
+        - if rows.present?
+          - @out_of_stock.each do |row|
+            %tr
+              %td
+                %strong= link_to row.product.asin, product_path(row.product.id)
+              %td= row.product.description
+              %td= row.instock_qty
+        - else
+          %td.text-center{ colspan: 6 }
+            %em There are no products out of stock to show.
+    .col-xs-12{ align: "center" }
+      = will_paginate rows, renderer: BootstrapPagination::Rails

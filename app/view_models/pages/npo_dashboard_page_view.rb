@@ -28,6 +28,10 @@ module Pages
       ReportCalculation.total_collected_amount(npo, Time.now.utc.beginning_of_month)
     end
 
+    def total_in_stock
+      1
+    end
+
     def total_collected_amount_for_previous_month
       p "here in totals"
       p "*********"
